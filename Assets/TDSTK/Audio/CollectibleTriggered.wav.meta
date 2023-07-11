@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 2a92a2b74e3d41e458aecb929a06275c
+labels:
+- USFX
+- ui
+- interface
+- animate
+- appear
+- stereo
+- menu
+timeCreated: 1448579307
+licenseType: Store
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
