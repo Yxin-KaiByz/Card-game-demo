@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     public static SoundManager Instance => instance;
-    private AudioSource audioSource;
+    private AudioSource bgSource;
     private AudioSource buttonEffect;
     //private bool musicState;
     private AudioClip hoverClip;
@@ -16,9 +16,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        buttonEffect = GetComponent<AudioSource>();
-        hoverClip = Resources.Load<AudioClip>("SFX/Button_Hover");
-        clickClip = Resources.Load<AudioClip>("SFX/Button_Click");
+        
     }
 
     // Start is called before the first frame update
@@ -26,20 +24,36 @@ public class SoundManager : MonoBehaviour
     {
 
         instance = this;
-        audioSource = this.GetComponent<AudioSource>();
+        AudioSource[] audioLs = GetComponents<AudioSource>();
+        bgSource = audioLs[0];
+        buttonEffect = audioLs[1];
+        hoverClip = Resources.Load<AudioClip>("SFX/Button_Hover");
+        clickClip = Resources.Load<AudioClip>("SFX/Button_Click");
         //musicState = true;
     }
 
-    public void ChangeValue(float value)
+    public void ChangeBgValue(float value)
     {
-        audioSource.volume = value;
+        bgSource.volume = value;
     }
 
-    public void ChangeOpen(bool isOpen)
+    public void ChangeBgOpen(bool isOpen)
     {
         //musicState = !musicState;
         //开启代表mute
-        audioSource.mute = !isOpen;
+        bgSource.mute = !isOpen;
+    }
+
+    public void ChangeEtValue(float value)
+    {
+        buttonEffect.volume = value;
+    }
+
+    public void ChangeEtOpen(bool isOpen)
+    {
+        //musicState = !musicState;
+        //开启代表mute
+        buttonEffect.mute = !isOpen;
     }
 
     public void PlayButtonHover()
