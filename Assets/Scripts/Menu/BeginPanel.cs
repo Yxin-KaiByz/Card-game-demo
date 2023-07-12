@@ -27,22 +27,25 @@ public class BeginPanel : BasePanel<BeginPanel>
 
     public void beginTheGame()
     {
+        SoundManager.Instance.PlayButtonClick();
         SceneManager.LoadScene("Main");
     }
 
     public void cardLibrary()
     {
-        
+        SoundManager.Instance.PlayButtonClick();
     }
 
     public void settingList()
     {
+        SoundManager.Instance.PlayButtonClick();
         SettingSlider.Instance.showMe();
         hideMe();
     }
 
     public void quitGame()
     {
+        SoundManager.Instance.PlayButtonClick();
         Application.Quit();
     }
 }

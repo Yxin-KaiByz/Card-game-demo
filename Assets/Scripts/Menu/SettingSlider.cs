@@ -15,7 +15,7 @@ public class SettingSlider : BasePanel<SettingSlider>
     }
     public void changeMusic()
     {
-        BackGroundMusic.Instance.ChangeValue(musicSL.value);
+        SoundManager.Instance.ChangeValue(musicSL.value);
     }
 
     public void changeEffect()
@@ -25,7 +25,7 @@ public class SettingSlider : BasePanel<SettingSlider>
 
     public void setMusic()
     {
-        BackGroundMusic.Instance.ChangeOpen(musicToggle.isOn);
+        SoundManager.Instance.ChangeOpen(musicToggle.isOn);
     }
 
     public void setEffect()
