@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasePanel<T> : MonoBehaviour where T:class
+public class BasePanel<T> : MonoBehaviour where T : class
 {
     private static T instance;
 
@@ -11,7 +12,7 @@ public class BasePanel<T> : MonoBehaviour where T:class
 
     private void Awake()
     {
-
+       
         instance = this as T;
     }
 
