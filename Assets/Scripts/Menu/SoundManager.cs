@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,7 +9,8 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     public static SoundManager Instance => instance;
-    public AudioSource bgSource;
+    private AudioSource[] audioLs;
+    private AudioSource bgSource;
     private AudioSource buttonEffect;
     //private bool musicState;
     private AudioClip hoverClip;
@@ -24,7 +26,7 @@ public class SoundManager : MonoBehaviour
     {
 
         instance = this;
-        AudioSource[] audioLs = GetComponents<AudioSource>();
+        audioLs = GetComponents<AudioSource>();
         bgSource = audioLs[0];
         buttonEffect = audioLs[1];
         hoverClip = Resources.Load<AudioClip>("SFX/Button_Hover");
@@ -57,6 +59,11 @@ public class SoundManager : MonoBehaviour
         buttonEffect.mute = !isOpen;
     }
 
+    public void PlayBgTheme()
+    {
+        bgSource.loop = true;
+        bgSource.Play();
+    }
     public void PlayButtonHover()
     {
         buttonEffect.PlayOneShot(hoverClip);
@@ -64,5 +71,10 @@ public class SoundManager : MonoBehaviour
     public void PlayButtonClick()
     {
         buttonEffect.PlayOneShot(clickClip);
+    }
+
+    public bool isAudioPlaying(int i)
+    {
+        return audioLs[i].isPlaying;
     }
 }

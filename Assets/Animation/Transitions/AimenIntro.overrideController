@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AimenIntro
+  m_Controller: {fileID: 9100000, guid: db088ed0390a3ec4585c2752985bc3de, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e574fcdc53edd724fa08516ae90db8a5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 40d841473eb25fa4294b8141520bc0d3, type: 2}
