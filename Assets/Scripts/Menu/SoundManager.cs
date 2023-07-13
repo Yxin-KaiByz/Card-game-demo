@@ -29,6 +29,7 @@ public class SoundManager : MonoBehaviour
         buttonEffect = audioLs[1];
         hoverClip = Resources.Load<AudioClip>("SFX/Button_Hover");
         clickClip = Resources.Load<AudioClip>("SFX/Button_Click");
+        SettingSlider.Instance.updatePanelInfor();
         //musicState = true;
     }
 
