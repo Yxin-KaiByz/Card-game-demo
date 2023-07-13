@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
 
-    public Transform player;
+    //public Transform background;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +14,7 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.LookAt(player);
+        
+        //this.transform.LookAt(player);
     }
 }

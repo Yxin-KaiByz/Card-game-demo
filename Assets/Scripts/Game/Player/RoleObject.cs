@@ -38,6 +38,10 @@ public class RoleObject : MonoBehaviour
 
     protected SpriteRenderer roleSprite;
     protected Animator roleAnimator;
+    private Rigidbody2D body;
+    protected Vector2 frontPos;
+    public Transform leftWall;
+    public Transform rightWall;
 
     protected virtual void Awake()
     {
@@ -45,12 +49,36 @@ public class RoleObject : MonoBehaviour
         roleAnimator = this.GetComponentInChildren<Animator>(); 
     }
 
+    public void Start()
+    {
+        body = this.GetComponent<Rigidbody2D>();
+        
+    }
+
     protected virtual void Update()
     {
+        
+        //Vector2 p = body.position;
         //move logic
-        this.transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+        if (!((this.transform.position.x <= leftWall.position.x) || (this.transform.position.x >= rightWall.position.x)))
+        {
+            frontPos = this.transform.position;
+            this.transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+
+        }
+        else
+        {
+            Vector2 nowPosition = this.transform.position;
+            nowPosition.x = frontPos.x;
+            this.transform.position = nowPosition;
+            print(this.transform.position.x);
+        }
+        //this.transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+        /*p.x += moveDir.normalized.x * moveSpeed * Time.deltaTime;
+        p.y += moveDir.normalized.y * moveSpeed * Time.deltaTime;
+        body.MovePosition(p);*/
         //turnAround logic,ignore 0 condition
-        if(moveDir.x > 0)
+        if (moveDir.x > 0)
         {
             roleSprite.flipX = false;
         }else if(moveDir.x < 0)
@@ -63,6 +91,7 @@ public class RoleObject : MonoBehaviour
         }
         else
         {
+            
             changeAction(E_Action_Type.Move);
         }
     }
