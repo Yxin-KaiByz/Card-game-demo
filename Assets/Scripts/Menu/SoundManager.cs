@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     public static SoundManager Instance => instance;
-    private AudioSource bgSource;
+    public AudioSource bgSource;
     private AudioSource buttonEffect;
     //private bool musicState;
     private AudioClip hoverClip;
