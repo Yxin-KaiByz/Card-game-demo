@@ -3,6 +3,9 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 *.mp4
+CustomScene1/
+CustomScene2/
+CustomScene3/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -61,6 +64,7 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+
 
 # Crashlytics generated file
 crashlytics-build.properties
