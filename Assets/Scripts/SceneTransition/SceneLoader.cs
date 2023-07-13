@@ -8,11 +8,11 @@ public class SceneLoader : MonoBehaviour
 {
     private static SceneLoader instance;
     public Transition currentTrans;
-    public static SceneLoader Instance  => instance;
+    public static SceneLoader Instance => instance;
     // Start is called before the first frame update
     void Start()
     {
-
+        currentTrans.EndTrans();
     }
 
     private void Awake()
@@ -38,27 +38,23 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
         loading.allowSceneActivation = true;
-       /* while (loading.progress != 1)
-        {
-            yield return null;
-        }
-        yield return null;
-        //Play ending transition
-        print("finished loading scene");
-        currentTrans.EndTrans();
-        print("finished playing end trans");
-        while (!currentTrans.isAnimationDone())
-        {
-            yield return null;
-        }*/
     }
 
-    public void LoadScene(string sceneName, Transition trans = null)
+    public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadLevel(sceneName));
     }
 
- 
+    public void setTransition(int i)
+    {
+        Transition newTrans = GetComponentsInChildren<Transition>()[i];
+        currentTrans = newTrans;
+    }
+    
+    public bool isTransitionDone()
+    {
+        return currentTrans.isAnimationDone();
+    }
     // Update is called once per frame
     void Update()
     {

@@ -15,20 +15,22 @@ public class BeginPanel : BasePanel<BeginPanel>
     // Start is called before the first frame update
     void Start()
     {
-        
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneLoader.Instance.isTransitionDone() && !SoundManager.Instance.isAudioPlaying(0))
+        {
+            SoundManager.Instance.PlayBgTheme();
+        }
     }
 
     public void beginTheGame()
     {
         SoundManager.Instance.PlayButtonClick();
-        SceneManager.LoadScene("Main");
+        SceneLoader.Instance.setTransition(1);
+        SceneLoader.Instance.LoadScene("Main");
     }
 
     public void cardLibrary()
