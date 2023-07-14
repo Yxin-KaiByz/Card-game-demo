@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SettingSlider : BasePanel<SettingSlider>
 {
+
     public Slider musicSL;
     public Toggle musicToggle;
     public Slider effectSL;
