@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 35f76970bbd3dbb4f9ff3ef761889c19
+labels:
+- USFX
+- stereo
+- ammo
+- FPS
+- firearm
+- reload
+- handling
+timeCreated: 1448579273
+licenseType: Store
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
