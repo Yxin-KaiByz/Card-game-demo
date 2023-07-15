@@ -9,9 +9,16 @@ public class RoleManager
     public static RoleManager Instance = new RoleManager();
     public static int DEFAULT_ATTACK = 4;
     public List<string> cardList;//存储拥有的卡牌
+    public string playerObjectLocation;
+    public GameObject player;
 
     public void Init()
     {
+        playerObjectLocation = PlayerObject.PlayerPrefabLocation;
+
+        player = Object.Instantiate(Resources.Load(playerObjectLocation)) as GameObject;
+        player.transform.position = new Vector3(217,295,0);
+        
         cardList = new List<string>();
         //初始四张攻击卡,四张防御
         for(int i = 0; i < DEFAULT_ATTACK; i++)

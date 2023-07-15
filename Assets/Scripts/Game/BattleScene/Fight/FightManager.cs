@@ -12,11 +12,29 @@ public class FightManager : MonoBehaviour
 
     public FightUnit fightUnit;//战斗单元
 
+    public int MaxHp;//最大血量
+    public int CurHp; //当前血量
+
+    public int MaxPointCount;//最大点数(卡牌消耗点数)
+    public int CurPointCount;//当前点数
+    public int DefenseCount;//防御值
+
+    //初始化属性
+    public void Init()
+    {
+        MaxHp = 10;
+        CurHp = 10;
+        CurPointCount = 5;
+        DefenseCount = 10;
+        MaxPointCount = 10;
+    }
+
     private void Awake()
     {
         instance = this;
     }
 
+    
     public void ChnageType(E_FightType type)
     {
         switch (type)
@@ -24,6 +42,7 @@ public class FightManager : MonoBehaviour
             case E_FightType.None:
                 break;
             case E_FightType.Init:
+                //刚开始都是init，在init中会切换到playerTurn
                 fightUnit = new FightInit();
                 break;
             case E_FightType.Player:

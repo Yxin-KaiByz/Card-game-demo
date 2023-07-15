@@ -13,7 +13,7 @@ public class BattleAudio : MonoBehaviour
         music = GetComponent<AudioSource>();
         refreshMusic();
         refreshEffect();
-
+        print(music.isPlaying);
 
 
     }

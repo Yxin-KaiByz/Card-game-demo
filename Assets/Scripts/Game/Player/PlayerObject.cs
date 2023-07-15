@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerObject : RoleObject
 {
+    public static string PlayerPrefabLocation = "Model/Bronya2";
     // Start is called before the first frame update
     protected override void Awake()
     {
