@@ -38,7 +38,7 @@ public class RoleObject : MonoBehaviour
 
     protected SpriteRenderer roleSprite;
     protected Animator roleAnimator;
-    private Rigidbody2D body;
+    //private Rigidbody2D body;
     protected Vector2 frontPos;
     public Transform leftWall;
     public Transform rightWall;
@@ -51,7 +51,7 @@ public class RoleObject : MonoBehaviour
 
     public void Start()
     {
-        body = this.GetComponent<Rigidbody2D>();
+        //body = this.GetComponent<Rigidbody2D>();
         
     }
 

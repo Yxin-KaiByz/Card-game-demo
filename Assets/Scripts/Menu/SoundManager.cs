@@ -77,4 +77,9 @@ public class SoundManager : MonoBehaviour
     {
         return audioLs[i].isPlaying;
     }
+
+    public void changeBackgroundMusic(AudioSource music)
+    {
+        this.audioLs[0] = music;
+    }
 }

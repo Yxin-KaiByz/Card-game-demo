@@ -36,6 +36,7 @@ public class GameDataManager
     public void oepnOrCloseBGMusic(bool isOpen)
     {
         musicData.isOpenBG = isOpen;
+       
         //存储改变后的数据
         PlayerPrefsDataMgr.Instance.SaveData(musicData, "Music");
 
