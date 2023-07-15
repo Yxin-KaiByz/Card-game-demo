@@ -29,8 +29,7 @@ public class BeginPanel : BasePanel<BeginPanel>
     public void beginTheGame()
     {
         SoundManager.Instance.PlayButtonClick();
-        SceneLoader.Instance.setTransition(1);
-        SceneLoader.Instance.LoadScene("Main");
+        SlidingMenu.Instance.SlideLeft();
     }
 
     public void cardLibrary()
