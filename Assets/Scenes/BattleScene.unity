@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 467986743}
   - component: {fileID: 467986742}
   - component: {fileID: 467986741}
-  - component: {fileID: 467986740}
   - component: {fileID: 467986745}
   m_Layer: 5
   m_Name: Canvas
@@ -144,19 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &467986740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467986739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b616284b8cb803d4791793ee83a3f5aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseBackground: Ice2Prefab
 --- !u!114 &467986741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +312,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1614544843}
   - component: {fileID: 1614544842}
+  - component: {fileID: 1614544844}
+  - component: {fileID: 1614544845}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -360,6 +348,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614544844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614544841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b616284b8cb803d4791793ee83a3f5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseBackground: Ice2Prefab
+--- !u!114 &1614544845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614544841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47bae60b281ccf043becc919857f547a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776763314
 GameObject:
   m_ObjectHideFlags: 0
