@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class BattleAudio : MonoBehaviour
 {
     private AudioSource music;
+    private AudioSource effect;
+    GameDataManager gm;
+    private static  BattleAudio instance;
+    public static BattleAudio Instance => instance;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         music = GetComponent<AudioSource>();
         refreshMusic();
         refreshEffect();
@@ -22,7 +27,7 @@ public class BattleAudio : MonoBehaviour
 
     public void refreshMusic()
     {
-        GameDataManager gm = GameDataManager.Instance;
+        gm = GameDataManager.Instance;
         music.volume = gm.musicData.bgValue;
         music.mute = !gm.musicData.isOpenBG;
         music.loop = true;
@@ -31,7 +36,11 @@ public class BattleAudio : MonoBehaviour
 
     public void refreshEffect()
     {
-
+        effect = this.AddComponent<AudioSource>();
+        effect.volume = gm.musicData.effectValue;
+        effect.mute = !gm.musicData.isOpenEffect;
+        effect.loop = false;
+        
     }
 
     public void changeMusic(string name)
@@ -41,4 +50,15 @@ public class BattleAudio : MonoBehaviour
         refreshMusic();
     
     }
+
+    public void changeEffect(string name)
+    {
+        print("In battle audio");
+        AudioClip clip = Resources.Load<AudioClip>("SFX/" + name);
+        effect.clip = clip;
+        effect.Play();
+
+    }
+
+
 }

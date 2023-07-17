@@ -55,4 +55,45 @@ public class EnemyManager
         }
 
     }
+
+    //移除敌人
+    public void DeleteEnemy(Enemy enemy)
+    {
+        enemyList.Remove(enemy);
+
+        //后续做是否击杀所有怪物判断
+        if(enemyList.Count == 0)
+        {
+            FightManager.Instance.ChnageType(E_FightType.Win);
+        }
+    }
+
+    /*//remove enemy
+    public void DeleteEnemy(Enemy enemy)
+    {
+        enemyList.Remove(enemy);
+
+        //后续左是否击杀所有怪物判断
+    }*/
+
+    //执行所有活着的怪物的行为
+    public IEnumerator DoAllEnemyAction()
+    {
+        for(int i = 0; i < enemyList.Count; i++)
+        {
+            //延迟返回，先后执行
+            yield return FightManager.Instance.StartCoroutine(enemyList[i].DoAction());
+        }
+
+        //行动完成后更新所有敌人行为
+        for(int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].SetRandomAction();
+        }
+
+        //切换到玩家回合
+        FightManager.Instance.ChnageType(E_FightType.Player);
+        FightManager.Instance.playerNewTurn = true;
+
+    }
 }

@@ -19,6 +19,8 @@ public class FightManager : MonoBehaviour
     public int CurPointCount;//当前点数
     public int DefenseCount;//防御值
 
+    public bool playerNewTurn;
+
     //初始化属性
     public void Init()
     {
@@ -27,6 +29,7 @@ public class FightManager : MonoBehaviour
         CurPointCount = 5;
         DefenseCount = 10;
         MaxPointCount = 10;
+        playerNewTurn = false;
     }
 
     private void Awake()
@@ -35,6 +38,7 @@ public class FightManager : MonoBehaviour
     }
 
     
+    //change battle type
     public void ChnageType(E_FightType type)
     {
         switch (type)
@@ -58,7 +62,35 @@ public class FightManager : MonoBehaviour
                 fightUnit = new FightLose();
                 break;
         }
+        
         fightUnit.Init();
+    }
+
+    //玩家受伤逻辑
+    public void GetPlayerHit(int hit)
+    {
+        //扣护盾
+        if (DefenseCount >= hit)
+        {
+            DefenseCount -= hit;
+        }
+        else
+        {
+            hit = hit - DefenseCount;
+            DefenseCount = 0;
+            CurHp -= hit;
+            if (CurHp < 0) {
+
+                CurHp = 0;
+                //game over
+                ChnageType(E_FightType.Loss);
+            } 
+            
+        }
+        //界面更新
+        UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateHP();
+        UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateDefense();
+       
     }
 
     public void Update()

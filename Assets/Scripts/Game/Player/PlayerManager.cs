@@ -14,6 +14,7 @@ public class RoleManager
 
     public void Init()
     {
+        //得到玩家模型，放入场景中
         playerObjectLocation = PlayerObject.PlayerPrefabLocation;
 
         player = Object.Instantiate(Resources.Load(playerObjectLocation)) as GameObject;
