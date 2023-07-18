@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         //actionObj.transform.position = Camera.main.WorldToScreenPoint(transform.Find("Head").position);
         Vector3 enemyVec = transform.Find("Head").position;
         enemyVec.z = 0;
-        enemyVec.y += 140;
+        enemyVec.y += 14;
         actionObj.transform.position = Camera.main.WorldToScreenPoint(enemyVec);
 
         SetRandomAction();

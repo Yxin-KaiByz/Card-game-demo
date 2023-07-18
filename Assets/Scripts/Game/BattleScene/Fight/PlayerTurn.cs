@@ -23,7 +23,15 @@ public class PlayerTurn : FightUnit
             //更新点数
             if (FightManager.Instance.playerNewTurn)
             {
-                FightManager.Instance.CurPointCount += 5;
+                if(FightManager.Instance.CurPointCount + 4 > FightManager.Instance.MaxPointCount)
+                {
+                    FightManager.Instance.CurPointCount = FightManager.Instance.MaxPointCount;
+                }
+                else
+                {
+                    FightManager.Instance.CurPointCount += 4;
+                }
+                
                 UIMgr.Instance.GetUI<FightUI>("FightUI").UpdatePoint();
                 FightManager.Instance.playerNewTurn = false;
             }
