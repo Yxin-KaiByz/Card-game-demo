@@ -46,7 +46,7 @@ public class RoleObject : MonoBehaviour
     protected virtual void Awake()
     {
         /*roleSprite = this.GetComponentInChildren<SpriteRenderer>();
-        roleAnimator = this.GetComponentInChildren<Animator>(); */
+        roleAnimator = this.GetComponentInChildren<Animator>();*/
     }
 
     public void Start()

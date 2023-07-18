@@ -6,14 +6,17 @@ using UnityEngine;
 
 public class PlayerObject : RoleObject
 {
-    public static string PlayerPrefabLocation = "Model/Bronya2";
+    public static string modelPath;
+    private Collider2D playerCollider;
     // Start is called before the first frame update
     protected override void Awake()
     {
         //父类相关的Awake逻辑一定概要保留
         base.Awake();
+        playerCollider = GetComponent<Collider2D>();
         //选择对应的玩家model预设体并挂载与Player
-        loadCharModel(characterData.Instance.characterID);
+        //loadCharModel(characterData.Instance.characterID);
+        loadCharModel(0);
         //开启输入控制
         InputMgr.GetInstance().StartOrEndCheck(true);
         //获取输入权限
@@ -25,6 +28,18 @@ public class PlayerObject : RoleObject
         //一定要保持这个base.Update的存在 因为 移动逻辑 是写在父类中的
         //除非之后你要重写 才不需要它
         base.Update();
+        if (playerCollider.IsTouching(EnemySpawnPoint.Instance.spawnPointCollider))
+        {
+            //print("Touching enemy");
+            EnemySpawnPoint.Instance.promptSprite.gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {    
+                SceneLoader.Instance.LoadScene("BattleScene");                
+            }
+        } else
+        {
+            EnemySpawnPoint.Instance.promptSprite.gameObject.SetActive(false);
+        }
     }
     /// <summary>
     /// 通过来自menu的CharID加载角色预设体，并挂载为子对象
@@ -32,7 +47,7 @@ public class PlayerObject : RoleObject
     /// <param name="CharID"></param>
     public void loadCharModel(int CharID)
     {
-        string modelPath;
+        //string modelPath;
         switch (CharID)
         {
             case 0:
@@ -40,6 +55,10 @@ public class PlayerObject : RoleObject
                 break;
             case 1:
                 modelPath = "Model/Elysia";
+                break;
+            case 2:
+                modelPath = null;
+                Debug.Log("Unimplemented charID 2");
                 break;
             default:
                 modelPath = null;

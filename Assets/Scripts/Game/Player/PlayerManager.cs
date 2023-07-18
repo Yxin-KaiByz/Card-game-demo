@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,11 @@ public class RoleManager
     public void Init()
     {
         //得到玩家模型，放入场景中
-        playerObjectLocation = PlayerObject.PlayerPrefabLocation;
+        playerObjectLocation = PlayerObject.modelPath;
 
         player = Object.Instantiate(Resources.Load(playerObjectLocation)) as GameObject;
-        player.transform.position = new Vector3(217,295,0);
+        player.transform.position = new Vector3(415.36f,545.69f,0);
+        player.transform.GetComponentInChildren<Transform>().DOScale(new Vector3(124, 124, 1),0);
         
         cardList = new List<string>();
         //初始四张攻击卡,四张防御

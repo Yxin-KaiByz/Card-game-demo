@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CharacterPanel : BasePanel<CharacterPanel>
 {
-    // Start is called before the first frame update
     private Image charBackground;
     private GameObject charInfo;
 
