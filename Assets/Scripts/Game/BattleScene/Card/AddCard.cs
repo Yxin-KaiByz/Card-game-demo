@@ -17,6 +17,7 @@ public class AddCard : CardItem
                 // «∑Ò”–ø®≥È
                 UIMgr.Instance.GetUI<FightUI>("FightUI").CreateCardItem(val);
                 UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateCardItemPos();
+                UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateCardCount();
                 Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 2.5f));
 
                 playEffect(pos);

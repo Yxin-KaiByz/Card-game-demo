@@ -26,9 +26,9 @@ public class FightManager : MonoBehaviour
     {
         MaxHp = 10;
         CurHp = 10;
-        CurPointCount = 5;
+        CurPointCount = 4;
         DefenseCount = 10;
-        MaxPointCount = 10;
+        MaxPointCount = 8;
         playerNewTurn = false;
     }
 
