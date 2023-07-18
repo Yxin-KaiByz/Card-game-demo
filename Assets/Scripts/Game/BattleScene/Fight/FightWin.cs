@@ -10,5 +10,6 @@ public class FightWin : FightUnit
         //FightManager.Instance.StopAllCoroutines();
         Debug.Log("Win");
         //Ω·À„ΩÁ√Ê
+        UIMgr.Instance.ShowUI<SelectCardUI>("SelectCardUI");
     }
 }

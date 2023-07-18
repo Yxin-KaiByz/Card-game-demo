@@ -81,7 +81,7 @@ public class EnemyManager
     {
         for(int i = 0; i < enemyList.Count; i++)
         {
-            //延迟返回，先后执行
+            //延迟，先后执行
             yield return FightManager.Instance.StartCoroutine(enemyList[i].DoAction());
         }
 
