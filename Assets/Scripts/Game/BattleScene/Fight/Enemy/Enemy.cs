@@ -205,8 +205,8 @@ public class Enemy : MonoBehaviour
             case E_ActionType.Attack:
                 FightManager.Instance.GetPlayerHit(Attack);
                 //¶¶¶¯ÉãÏñ»ú
-                Camera.main.DOShakePosition(0.1f, 0.2f, 5, 45);
-                
+                Camera.main.DOShakePosition(1, 3, 5, 45);
+
                 break;
             case E_ActionType.Defend:
                 //¼Ó·ÀÓù
