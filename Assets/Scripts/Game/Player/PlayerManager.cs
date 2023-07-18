@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class RoleManager
 
         player = Object.Instantiate(Resources.Load(playerObjectLocation)) as GameObject;
         player.transform.position = new Vector3(217,295,0);
-        
+        //player.transform.GetComponentInChildren<Transform>().DOScale()
         cardList = new List<string>();
         //初始四张攻击卡,四张防御
         for(int i = 0; i < DEFAULT_ATTACK; i++)

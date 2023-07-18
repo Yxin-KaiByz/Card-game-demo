@@ -86,6 +86,8 @@ public class PlayerObject : RoleObject
         }
     }
 
+    
+
 
     private void OnDestroy()
     {

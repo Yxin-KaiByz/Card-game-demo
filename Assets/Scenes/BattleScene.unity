@@ -378,6 +378,7 @@ MonoBehaviour:
   MaxPointCount: 0
   CurPointCount: 0
   DefenseCount: 0
+  playerNewTurn: 0
 --- !u!1 &1776763314
 GameObject:
   m_ObjectHideFlags: 0
