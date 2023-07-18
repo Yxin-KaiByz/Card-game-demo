@@ -45,14 +45,15 @@ public class RoleObject : MonoBehaviour
 
     protected virtual void Awake()
     {
-        roleSprite = this.GetComponentInChildren<SpriteRenderer>();
-        roleAnimator = this.GetComponentInChildren<Animator>(); 
+        /*roleSprite = this.GetComponentInChildren<SpriteRenderer>();
+        roleAnimator = this.GetComponentInChildren<Animator>(); */
     }
 
     public void Start()
     {
         //body = this.GetComponent<Rigidbody2D>();
-        
+        roleSprite = this.GetComponentInChildren<SpriteRenderer>();
+        roleAnimator = this.GetComponentInChildren<Animator>();
     }
 
     protected virtual void Update()

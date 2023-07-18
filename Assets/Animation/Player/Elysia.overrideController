@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Elysia
+  m_Controller: {fileID: 9100000, guid: 96cf44329426c3846b40f4d62c8f8abf, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0feb337847c455b4e944ec99e6fe968c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9134746d1ccbae543b0229ce6f0d8e8c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 36680b38e76ae0044903c53508375688, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3179baf42e7299c47b9a33b03b8547c4, type: 2}

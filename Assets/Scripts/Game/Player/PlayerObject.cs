@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerObject : RoleObject
@@ -10,6 +12,8 @@ public class PlayerObject : RoleObject
     {
         //父类相关的Awake逻辑一定概要保留
         base.Awake();
+        //选择对应的玩家model预设体并挂载与Player
+        loadCharModel(characterData.Instance.characterID);
         //开启输入控制
         InputMgr.GetInstance().StartOrEndCheck(true);
         //获取输入权限
@@ -22,7 +26,32 @@ public class PlayerObject : RoleObject
         //除非之后你要重写 才不需要它
         base.Update();
     }
-
+    /// <summary>
+    /// 通过来自menu的CharID加载角色预设体，并挂载为子对象
+    /// </summary>
+    /// <param name="CharID"></param>
+    public void loadCharModel(int CharID)
+    {
+        string modelPath;
+        switch (CharID)
+        {
+            case 0:
+                modelPath = "Model/Bronya";
+                break;
+            case 1:
+                modelPath = "Model/Elysia";
+                break;
+            default:
+                modelPath = null;
+                Debug.Log("Error during loadCharModel, charID unknown");
+                break;
+        }
+       
+        GameObject playerModel = (GameObject)Resources.Load(modelPath);
+        playerModel = Instantiate(playerModel);
+        playerModel.transform.SetParent(transform, false);
+        playerModel.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+    }
     /// <summary>
     /// 给予控制权
     /// </summary>
