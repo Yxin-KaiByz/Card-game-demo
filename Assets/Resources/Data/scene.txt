@@ -1,0 +1,5 @@
+Id	Location	BattleScene	BossLocation	
+Id	Map location	Battle Map Scene	Boss Map Location	
+1001	Image/UI/IceMain	UI/Ice2Prefab	UI/Ice3Prefab	
+1002	Image/UI/IceMain	UI/Ice2Prefab	UI/Ice3Prefab	
+1003	Image/UI/IceMain	UI/Ice2Prefab	UI/Ice3Prefab	

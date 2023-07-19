@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerObject : RoleObject
 {
@@ -45,13 +46,19 @@ public class PlayerObject : RoleObject
             //根据一共打败了几个敌人，来找到playerpref之前存储的摧毁过的敌人，重新一起摧毁
             for(int i = 0; i < NUMBER_OF_DESTORIED;  i++)
             {
-                string name = (PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + i) as FightingObject).fightingName;
-                print("tring to destory " + name);
-                GameObject temp = GameObject.Find(name);
-                if (temp != null)
+                FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + i) as FightingObject;
+                //改变人物位置
+                if (i ==  NUMBER_OF_DESTORIED - 1)
                 {
-                    Destroy(temp);
-                    EnemySpawnPoint.Instance.spawnPointCollider.Remove(temp.GetComponent<Collider2D>());
+                    transform.position = new Vector3(temp.currentX, transform.position.y, transform.position.z);
+                }
+                string name = temp.fightingName;
+                print("tring to destory " + name);
+                GameObject obj = GameObject.Find(name);
+                if (obj != null)
+                {
+                    Destroy(obj);
+                    EnemySpawnPoint.Instance.spawnPointCollider.Remove(obj.GetComponent<Collider2D>());
                     print(EnemySpawnPoint.Instance.spawnPointCollider.Count);
                 }
                 else
@@ -134,6 +141,7 @@ public class PlayerObject : RoleObject
                 DontDestroyOnLoad(GameObject.Find("LevelBackground"));*/
                 print(collidingName);
                 fightingObject.fightingName = collidingName;
+                fightingObject.currentX = collider.transform.position.x;
                 PlayerPrefsDataMgr.Instance.SaveData(fightingObject, "FightingWith" + NUMBER_OF_DESTORIED);
                 FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
                 
