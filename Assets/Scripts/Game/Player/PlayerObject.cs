@@ -15,11 +15,13 @@ public class PlayerObject : RoleObject
     private static GameObject collideObject;
     private static bool finishBattle = false;
     private FightingObject fightingObject;
+    private static int NUMBER_OF_DESTORIED;
 
     // Start is called before the first frame update
     protected override void Awake()
     {
-        fightingObject = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith") as FightingObject;
+        
+        fightingObject = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
         //父类相关的Awake逻辑一定概要保留
         base.Awake();
         playerCollider = GetComponent<Collider2D>();
@@ -40,17 +42,24 @@ public class PlayerObject : RoleObject
             {
                 print("Not null");
             }*/
-            string name = (PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith") as FightingObject).fightingName;
-            print("tring to destory " + name);
-            GameObject temp = GameObject.Find(name).transform.Find("SpawnObject").gameObject;
-            if (temp != null)
+            //根据一共打败了几个敌人，来找到playerpref之前存储的摧毁过的敌人，重新一起摧毁
+            for(int i = 0; i < NUMBER_OF_DESTORIED;  i++)
             {
-                Destroy(temp);
+                string name = (PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + i) as FightingObject).fightingName;
+                print("tring to destory " + name);
+                GameObject temp = GameObject.Find(name);
+                if (temp != null)
+                {
+                    Destroy(temp);
+                    EnemySpawnPoint.Instance.spawnPointCollider.Remove(temp.GetComponent<Collider2D>());
+                    print(EnemySpawnPoint.Instance.spawnPointCollider.Count);
+                }
+                else
+                {
+                    print("why is null");
+                }
             }
-            else
-            {
-                print("why is null");
-            }
+            
             //GameObject temp = GameObject.Find((PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith") as FightingObject).fightingName);
             /*print(temp.name);
             Destroy(temp);*/
@@ -87,7 +96,25 @@ public class PlayerObject : RoleObject
         //一定要保持这个base.Update的存在 因为 移动逻辑 是写在父类中的
         //除非之后你要重写 才不需要它
         base.Update();
-        if (playerCollider.IsTouching(EnemySpawnPoint.Instance.spawnPointCollider))
+        //if (playerCollider.IsTouching(EnemySpawnPoint.Instance.spawnPointCollider))
+        bool touchingOrNot = false;
+        Collider2D collider = null;
+        string collidingName = null;
+        
+        //检查是否和碰撞体发生碰撞，如果有就改变prompt的位置
+        foreach(Collider2D each in EnemySpawnPoint.Instance.spawnPointCollider){
+            if (playerCollider.IsTouching(each))
+            {
+                touchingOrNot = true;
+                EnemySpawnPoint.Instance.promptSprite.GetComponent<RectTransform>().position = each.GetComponent<Transform>().position;
+                collidingName = each.name;
+                collider = each;
+                break;
+            }
+            
+        }
+
+        if (touchingOrNot)
         {
             //print("Touching enemy");
 
@@ -105,13 +132,16 @@ public class PlayerObject : RoleObject
                     print(collideObject.name);
                 }
                 DontDestroyOnLoad(GameObject.Find("LevelBackground"));*/
-                print(EnemySpawnPoint.Instance.name);
-                fightingObject.fightingName = EnemySpawnPoint.Instance.name;
-                PlayerPrefsDataMgr.Instance.SaveData(fightingObject, "FightingWith");
-                FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith") as FightingObject;
+                print(collidingName);
+                fightingObject.fightingName = collidingName;
+                PlayerPrefsDataMgr.Instance.SaveData(fightingObject, "FightingWith" + NUMBER_OF_DESTORIED);
+                FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
                 
                 print("I stored " + temp.fightingName);
-                SceneLoader.Instance.LoadScene("BattleScene");      
+                EnemySpawnPoint.Instance.spawnPointCollider.Remove(collider);
+                NUMBER_OF_DESTORIED++;
+                SceneLoader.Instance.LoadScene("BattleScene");
+                return;
                 
             }
         } else

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
-    public Collider2D spawnPointCollider { get; private set; }
+    public List<Collider2D> spawnPointCollider;
     public SpriteRenderer promptSprite { get; set; }
     public static EnemySpawnPoint Instance { get; private set; }
 
@@ -13,9 +13,13 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         //spawnedObject = transform.Find("SpawnObject").gameObject;
         Instance = this;
-        spawnPointCollider = GetComponent<Collider2D>();
+        for(int i = 0; i < GetComponentsInChildren<Collider2D>().Length; i++)
+        {
+            spawnPointCollider.Add(GetComponentsInChildren<Collider2D>()[i]);
+        }
+       
         promptSprite = this.transform.Find("prompt").GetComponent<SpriteRenderer>();
-        
-        spawnPointCollider.isTrigger = true;
+        print(spawnPointCollider.Count);
+        //spawnPointCollider.isTrigger = true;
     }
 }
