@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CharacterPanel : BasePanel<CharacterPanel>
 {
-    // Start is called before the first frame update
     private Image charBackground;
     private GameObject charInfo;
 
@@ -54,6 +53,7 @@ public class CharacterPanel : BasePanel<CharacterPanel>
     }
     public void characterOne()
     {
+        characterData.Instance.characterID = 0;
         setCharInfo("Bronya", new Color(0f,0.2f, 1f));
         charInfo.gameObject.SetActive(true);
         loadBgSprite("Image/Character/charBackground_Bronya");
@@ -62,6 +62,7 @@ public class CharacterPanel : BasePanel<CharacterPanel>
 
     public void characterTwo()
     {
+        characterData.Instance.characterID = 1;
         setCharInfo("Elysia", new Color(0.8f, 0.3f, 0.8f));
         charInfo.gameObject.SetActive(true);
         loadBgSprite("Image/Character/charBackground_Elysia");

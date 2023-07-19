@@ -12,11 +12,33 @@ public class FightManager : MonoBehaviour
 
     public FightUnit fightUnit;//战斗单元
 
+    public int MaxHp;//最大血量
+    public int CurHp; //当前血量
+
+    public int MaxPointCount;//最大点数(卡牌消耗点数)
+    public int CurPointCount;//当前点数
+    public int DefenseCount;//防御值
+
+    public bool playerNewTurn;
+
+    //初始化属性
+    public void Init()
+    {
+        MaxHp = 10;
+        CurHp = 10;
+        CurPointCount = 4;
+        DefenseCount = 10;
+        MaxPointCount = 8;
+        playerNewTurn = false;
+    }
+
     private void Awake()
     {
         instance = this;
     }
 
+    
+    //change battle type
     public void ChnageType(E_FightType type)
     {
         switch (type)
@@ -24,6 +46,7 @@ public class FightManager : MonoBehaviour
             case E_FightType.None:
                 break;
             case E_FightType.Init:
+                //刚开始都是init，在init中会切换到playerTurn
                 fightUnit = new FightInit();
                 break;
             case E_FightType.Player:
@@ -39,7 +62,35 @@ public class FightManager : MonoBehaviour
                 fightUnit = new FightLose();
                 break;
         }
+        
         fightUnit.Init();
+    }
+
+    //玩家受伤逻辑
+    public void GetPlayerHit(int hit)
+    {
+        //扣护盾
+        if (DefenseCount >= hit)
+        {
+            DefenseCount -= hit;
+        }
+        else
+        {
+            hit = hit - DefenseCount;
+            DefenseCount = 0;
+            CurHp -= hit;
+            if (CurHp < 0) {
+
+                CurHp = 0;
+                //game over
+                ChnageType(E_FightType.Loss);
+            } 
+            
+        }
+        //界面更新
+        UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateHP();
+        UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateDefense();
+       
     }
 
     public void Update()

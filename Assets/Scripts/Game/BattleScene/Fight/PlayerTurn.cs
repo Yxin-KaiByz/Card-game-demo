@@ -6,7 +6,39 @@ public class PlayerTurn : FightUnit
 {
     public override void Init()
     {
-       
+        UIMgr.Instance.ShowTip("Player Turn", Color.green, delegate ()
+        {
+            //如果卡堆没有卡，重新初始化
+            if(FightCardManager.Instance.HasCard() == false)
+            {
+                FightCardManager.Instance.Init();
+                //更新弃卡堆数量
+                UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateUsedCardHeapCount();
+            }
+
+            //抽牌
+            Debug.Log("抽牌");
+            UIMgr.Instance.GetUI<FightUI>("FightUI").CreateCardItem(4); //抽张
+            UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateCardItemPos();
+            //更新点数
+            if (FightManager.Instance.playerNewTurn)
+            {
+                if(FightManager.Instance.CurPointCount + 4 > FightManager.Instance.MaxPointCount)
+                {
+                    FightManager.Instance.CurPointCount = FightManager.Instance.MaxPointCount;
+                }
+                else
+                {
+                    FightManager.Instance.CurPointCount += 4;
+                }
+                
+                UIMgr.Instance.GetUI<FightUI>("FightUI").UpdatePoint();
+                FightManager.Instance.playerNewTurn = false;
+            }
+
+            //更新卡牌数量
+            UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateCardCount();
+        });
     }
 
     public override void OnUpdate()

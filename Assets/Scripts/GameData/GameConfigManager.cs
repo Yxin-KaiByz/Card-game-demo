@@ -10,6 +10,7 @@ public class GameConfigManager
     private GameConfigData cardData;//card
     private GameConfigData enemyData;//enemies
     private GameConfigData levelData;//level
+    private GameConfigData cardTypeData;//card Type
 
     //用来load txt文件通过.txt的方法可以转换成string
     private TextAsset textAsset;
@@ -26,7 +27,10 @@ public class GameConfigManager
         
         textAsset = Resources.Load<TextAsset>("Data/level");
         levelData = new GameConfigData(textAsset.text);
-        
+
+        textAsset = Resources.Load<TextAsset>("Data/cardType");
+        cardTypeData = new GameConfigData(textAsset.text);
+
     }
 
     //获取卡牌的存储键值对的list
@@ -59,6 +63,11 @@ public class GameConfigManager
     public Dictionary<string, string> GetLevelById(string id)
     {
         return levelData.GetOneById(id);
+    }
+
+    public Dictionary<string, string> GetCardTypeById(string id)
+    {
+        return cardTypeData.GetOneById(id);
     }
 
 }
