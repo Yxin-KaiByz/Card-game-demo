@@ -19,7 +19,7 @@ public class FightInit : FightUnit
         FightCardManager.Instance.Init();
 
         //敌人生成
-        EnemyManager.Instance.LoadRes("10003"); //加载关卡三1
+        EnemyManager.Instance.LoadRes("10001"); //加载关卡三1
 
         //切换到玩家回合
         FightManager.Instance.ChnageType(E_FightType.Player);

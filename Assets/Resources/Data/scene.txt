@@ -1,0 +1,5 @@
+Id	Location	BattleScene	BossLocation	NormalEnemyAmount	BossEnemyAmount	SpawnOne	SpawnTwo	SpawnThree	
+Id	Map location	Battle Map Scene	Boss Map Location	Number of enemy	Number of enemy	Spawn Enemy	Spawn Enemy	Spawn Enemy	
+1001	Image/UI/IceMain	Ice2Prefab	Image/UI/Ice3	3	1	Model/cheche(main)	Model/cheche(main)	Model/cheche(main)	
+1002	Image/UI/IceMain	Ice2Prefab	Image/UI/Ice3	3	1	Model/cheche(main)	Model/cheche(main)	Model/cheche(main)	
+1003	Image/UI/IceMain	Ice2Prefab	Image/UI/Ice3	3	1	Model/cheche(main)	Model/cheche(main)	Model/cheche(main)	
