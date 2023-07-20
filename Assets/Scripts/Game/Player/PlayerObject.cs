@@ -16,12 +16,14 @@ public class PlayerObject : RoleObject
     private static GameObject collideObject;
     private static bool finishBattle = false;
     private FightingObject fightingObject;
-    private static int NUMBER_OF_DESTORIED;
+    public static int NUMBER_OF_DESTORIED;
+    public static string currentLevel;
 
     // Start is called before the first frame update
     protected override void Awake()
     {
-        
+        instance = this;
+        currentLevel = "Normal";
         fightingObject = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
         //父类相关的Awake逻辑一定概要保留
         base.Awake();
@@ -59,7 +61,7 @@ public class PlayerObject : RoleObject
                 {
                     Destroy(obj);
                     EnemySpawnPoint.Instance.spawnPointCollider.Remove(obj.GetComponent<Collider2D>());
-                    print(EnemySpawnPoint.Instance.spawnPointCollider.Count);
+                    //print(EnemySpawnPoint.Instance.spawnPointCollider.Count);
                 }
                 else
                 {
@@ -120,6 +122,18 @@ public class PlayerObject : RoleObject
             }
             
         }
+        GameObject boss = GameObject.Find("Boss");
+        if (boss != null && currentLevel != "Normal")
+        {
+            
+            if (playerCollider.IsTouching(boss.GetComponent<Collider2D>()))
+            {
+                touchingOrNot = true;
+                EnemySpawnPoint.Instance.promptSprite.GetComponent<RectTransform>().position = boss.GetComponent<Transform>().position;
+                collidingName = boss.name;
+                collider = boss.GetComponent<Collider2D>();
+            }
+        }
 
         if (touchingOrNot)
         {
@@ -140,14 +154,32 @@ public class PlayerObject : RoleObject
                 }
                 DontDestroyOnLoad(GameObject.Find("LevelBackground"));*/
                 print(collidingName);
+                //设置碰撞物体和碰撞位置方便改变人物位置当战斗结束
                 fightingObject.fightingName = collidingName;
                 fightingObject.currentX = collider.transform.position.x;
+                //持久化打了几个怪
                 PlayerPrefsDataMgr.Instance.SaveData(fightingObject, "FightingWith" + NUMBER_OF_DESTORIED);
                 FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
                 
                 print("I stored " + temp.fightingName);
                 EnemySpawnPoint.Instance.spawnPointCollider.Remove(collider);
                 NUMBER_OF_DESTORIED++;
+                //更改txt数据
+                /*Dictionary<string , string> data = GameConfigManager.Instance.GetSceneTypeById("1001");
+                if(currentLevel == "Normal")
+                {
+                    data["NormalEnemyAmount"] = (int.Parse(data["NormalEnemyAmount"]) - 1).ToString();
+                    print("after change the normal enemy amount is : " + data["NormalEnemyAmount"]);
+                }*/
+                //拿去数据
+                LevelPlayerPref levelData = PlayerPrefsDataMgr.Instance.LoadData(typeof(LevelPlayerPref), "LevelPref") as LevelPlayerPref;
+                if (currentLevel == "Normal")
+                {
+                    levelData.normalAmount -= 1;
+                    print("after change the normal enemy amount is : " + levelData.normalAmount);
+                }
+                PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
+
                 SceneLoader.Instance.LoadScene("BattleScene");
                 return;
                 

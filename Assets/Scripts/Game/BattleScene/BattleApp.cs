@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BattleApp : MonoBehaviour
 {
+    private static BattleApp instance;
+    public static BattleApp Instance => instance;
     public string baseBackground;
    
     // Start is called before the first frame update
@@ -16,6 +18,7 @@ public class BattleApp : MonoBehaviour
         //instantiate GameConfigData，在实例化的过程中
         //就会把表的所有信息利用键值对存在list里面
         //我们可以通过id去区分他们
+        baseBackground = "Ice2Prefab";
         GameConfigManager.Instance.Init();
 
         //通过背景名显示背景

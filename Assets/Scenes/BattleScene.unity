@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b616284b8cb803d4791793ee83a3f5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBackground: Ice2Prefab
+  baseBackground: Ice3Prefab
 --- !u!114 &1614544845
 MonoBehaviour:
   m_ObjectHideFlags: 0

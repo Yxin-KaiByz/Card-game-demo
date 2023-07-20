@@ -19,7 +19,7 @@ public class EnemySpawnPoint : MonoBehaviour
         }
        
         promptSprite = this.transform.Find("prompt").GetComponent<SpriteRenderer>();
-        print(spawnPointCollider.Count);
+        //print(spawnPointCollider.Count);
         //spawnPointCollider.isTrigger = true;
     }
 }
