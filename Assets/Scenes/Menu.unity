@@ -579,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0034179688, y: 144.99}
+  m_AnchoredPosition: {x: 0.0034179688, y: 144.98999}
   m_SizeDelta: {x: 0.006652832, y: -289.99002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155819369
@@ -1074,10 +1074,6 @@ PrefabInstance:
     - target: {fileID: 5194929694703676225, guid: a8896845d4bb83640a8fb8a4e702ca84, type: 3}
       propertyPath: m_Name
       value: SceneLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 5194929694703676226, guid: a8896845d4bb83640a8fb8a4e702ca84, type: 3}
-      propertyPath: m_Camera
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5194929694703676229, guid: a8896845d4bb83640a8fb8a4e702ca84, type: 3}
       propertyPath: m_Pivot.x
@@ -2633,7 +2629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.9743331}
-  m_AnchoredPosition: {x: 0.006713867, y: -24.980972}
+  m_AnchoredPosition: {x: 0.006713867, y: -24.980957}
   m_SizeDelta: {x: -0.00012207031, y: -49.850037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980022792
