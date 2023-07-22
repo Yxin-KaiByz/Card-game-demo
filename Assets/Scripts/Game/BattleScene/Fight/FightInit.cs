@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class FightInit : FightUnit
 {
@@ -19,7 +20,26 @@ public class FightInit : FightUnit
         FightCardManager.Instance.Init();
 
         //敌人生成
-        EnemyManager.Instance.LoadRes("10001"); //加载关卡三1
+        //随机一个值
+        string randomLevel = "10001";
+        int rand = Random.Range(0, 3);
+        switch (rand)
+        {
+            case 0:
+                randomLevel = "10001";
+                break;
+            case 1:
+                randomLevel = "10002";
+                break;
+            case 2:
+                randomLevel = "10003";
+                break;
+            default:
+                break;
+        }
+        
+
+        EnemyManager.Instance.LoadRes(randomLevel); //加载关卡三1
 
         //切换到玩家回合
         FightManager.Instance.ChnageType(E_FightType.Player);

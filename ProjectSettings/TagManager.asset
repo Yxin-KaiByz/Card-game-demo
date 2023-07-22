@@ -14,7 +14,7 @@ TagManager:
   - Enemy
   - card
   - Teleport
-  - 
+  - Bag
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemy
+    uniqueID: 188407813
+    locked: 0
+  - name: Bag
+    uniqueID: 2686906873
     locked: 0

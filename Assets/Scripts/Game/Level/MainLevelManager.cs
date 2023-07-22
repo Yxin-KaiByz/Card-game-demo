@@ -4,11 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 负责管理main的场景
+/// </summary>
 public class MainLevelManager : MonoBehaviour
 {
     private static MainLevelManager instance;
     public static MainLevelManager Instance => instance;
-    public string levelId = "1001";
+    public static string levelId = "1001";
     public string levelMapLocation;
     public Sprite image;
     public Dictionary<string, string> sceneDic;
@@ -27,6 +30,7 @@ public class MainLevelManager : MonoBehaviour
     {
         instance = this;
         levelId = "1001";
+
         GameConfigManager.Instance.Init();
         sceneDic = GameConfigManager.Instance.GetSceneTypeById(levelId);
         spawnOne = Instantiate(Resources.Load(sceneDic["SpawnOne"]) as GameObject, GameObject.Find("SpawnObject").transform);

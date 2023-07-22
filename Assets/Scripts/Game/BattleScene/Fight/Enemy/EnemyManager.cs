@@ -20,7 +20,16 @@ public class EnemyManager
         //10003	 3	 10001=10002=10003  3,0,1=0,0,1=-3,0,1
 
         //读取关卡表
-        Dictionary<string, string> levelData = GameConfigManager.Instance.GetLevelById(id);
+
+        //获取目前是哪个map
+        string mapId = MainLevelManager.levelId;
+        Dictionary<string, string> dic = GameConfigManager.Instance.GetSceneTypeById(mapId);
+        string mapStoredLocation = dic["NormalLevelEnemyLocation"];
+        UnityEngine.TextAsset textAsset = Resources.Load<UnityEngine.TextAsset>(mapStoredLocation);
+        //根据这个map找到存放关卡的location然后根据之前随机出来的数值提取关卡信息
+        GameConfigData levelConfigData = new GameConfigData(textAsset.text);
+        Dictionary<string, string> levelData = levelConfigData.GetOneById(id);
+        //Dictionary<string, string> levelData = GameConfigManager.Instance.GetLevelById(id);
 
         //敌人id信息
         string[] enemyIds = levelData["EnemyIds"].Split('=');

@@ -75,6 +75,8 @@ public class PlayerObject : RoleObject
             finishBattle = false;
 
         }
+        PlayerBag bag = PlayerBag.Instance;
+        bag.addCardIntoBag();
     }
 
     /*private void Start()
@@ -180,6 +182,7 @@ public class PlayerObject : RoleObject
                 }
                 PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
 
+                //随机load一种场景
                 SceneLoader.Instance.LoadScene("BattleScene");
                 return;
                 
