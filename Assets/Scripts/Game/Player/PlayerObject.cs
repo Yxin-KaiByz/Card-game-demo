@@ -185,6 +185,10 @@ public class PlayerObject : RoleObject
 
                 //随机load一种场景
                 //SceneLoader.Instance.LoadScene("BattleScene");
+<<<<<<< HEAD
+=======
+                //测试用记得改回来把上面uncomment
+>>>>>>> bd8fa95550339842a81f06a5a4d15e8f7b7268d6
                 SceneManager.LoadScene("BattleScene");
                 return;
                 

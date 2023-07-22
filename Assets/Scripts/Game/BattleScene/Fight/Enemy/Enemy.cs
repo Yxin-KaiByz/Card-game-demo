@@ -125,15 +125,20 @@ public class Enemy : MonoBehaviour
     public void OnSelect()
     {
         _meshRender.material.SetColor("_OtlColor", Color.red);
-        transform.Find("cheche_bgremoved").GetComponent<SpriteRenderer>().color = Color.red;
+        //transform.Find("cheche_bgremoved").GetComponent<SpriteRenderer>().color = Color.red;
+        transform.GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
 
     //Î´Ñ¡ÖÐ
     public void OnUnSelect()
     {
         _meshRender.material.SetColor("_OtlColor", Color.black);
-        transform.Find("cheche_bgremoved").GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.Find("cheche_bgremoved").GetComponent<SpriteRenderer>().color = Color.white;
+        transform.GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
+
+
+
 
 
     // Update is called once per frame
