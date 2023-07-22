@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerObject : RoleObject
@@ -183,7 +184,9 @@ public class PlayerObject : RoleObject
                 PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
 
                 //随机load一种场景
-                SceneLoader.Instance.LoadScene("BattleScene");
+                //SceneLoader.Instance.LoadScene("BattleScene");
+                //测试用记得改回来把上面uncomment
+                SceneManager.LoadScene("BattleScene");
                 return;
                 
             }
