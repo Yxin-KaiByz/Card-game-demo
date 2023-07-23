@@ -137,8 +137,9 @@ public class MainLevelManager : MonoBehaviour
     public void spawnBoss()
     {
         GameObject boss = GameObject.Find("Boss");
-        GameObject obj = Instantiate(Resources.Load(sceneDic["SpawnThree"]) as GameObject, boss.transform);
-        obj.transform.position += new Vector3(0, 0.5f, 0);
+        GameObject obj = Instantiate(Resources.Load(sceneDic["BossModelLocation"]) as GameObject);
+        obj.transform.SetParent(boss.transform);
+        //obj.transform.position += new Vector3(0, 0.5f, 0);
 
         /*boss.AddComponent<Collider2D>();
         boss.AddComponent<Rigidbody2D>();*/

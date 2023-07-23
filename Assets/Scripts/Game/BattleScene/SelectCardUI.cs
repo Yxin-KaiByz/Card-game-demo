@@ -30,7 +30,8 @@ public class SelectCardUI : UIBase
         Destroy(this);*/
         print("Try to end Battle");
         
-        SceneLoader.Instance.LoadScene("Main");
+        //SceneLoader.Instance.LoadScene("Main");
+        SceneManager.LoadScene("Main");
         PlayerObject.changeFinish();
         
     }
