@@ -185,9 +185,9 @@ public class PlayerObject : RoleObject
 
                 //随机load一种场景
                 //Set to battle entrence
-                SceneLoader.Instance.setTransition(2);
-                SceneLoader.Instance.LoadScene("BattleScene");
-                //SceneManager.LoadScene("BattleScene");
+               /* SceneLoader.Instance.setTransition(2);
+                SceneLoader.Instance.LoadScene("BattleScene");*/
+                SceneManager.LoadScene("BattleScene");
                 return;
                 
             }

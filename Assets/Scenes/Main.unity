@@ -1578,11 +1578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411408469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 2.1290913, y: -1.62071, z: -9.804748}
-=======
   m_LocalPosition: {x: -2.8605862, y: -1.62988, z: -9.804748}
->>>>>>> e8ccffa1c06ba77575565b28784d8c0ea4ef24ed
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2373,8 +2369,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4268366264085883205}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
 --- !u!1001 &4882127177072450195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2440,7 +2434,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d4fc92a3788bf42b84fad7f188d95d, type: 3}
->>>>>>> e8ccffa1c06ba77575565b28784d8c0ea4ef24ed
 --- !u!1 &5356125838555858369
 GameObject:
   m_ObjectHideFlags: 0
