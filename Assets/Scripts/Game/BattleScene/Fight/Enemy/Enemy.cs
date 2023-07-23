@@ -65,12 +65,14 @@ public class Enemy : MonoBehaviour
         hpImage = hpItemObj.transform.Find("fill").GetComponent<Image>();
 
         //设置血条 行动力位置
-        hpItemObj.transform.position = Camera.main.WorldToScreenPoint(transform.Find("Bottom").position);
+        // hpItemObj.transform.position = Camera.main.WorldToScreenPoint(transform.Find("Bottom").position);
+        hpItemObj.transform.position = transform.Find("Bottom").position;
         //actionObj.transform.position = Camera.main.WorldToScreenPoint(transform.Find("Head").position);
         Vector3 enemyVec = transform.Find("Head").position;
         enemyVec.z = 0;
-        enemyVec.y += 14;
-        actionObj.transform.position = Camera.main.WorldToScreenPoint(enemyVec);
+        enemyVec.y += 20;
+        // actionObj.transform.position = Camera.main.WorldToScreenPoint(enemyVec);
+        actionObj.transform.position = enemyVec;
 
         SetRandomAction();
 

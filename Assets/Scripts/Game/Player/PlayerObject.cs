@@ -184,12 +184,10 @@ public class PlayerObject : RoleObject
                 PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
 
                 //随机load一种场景
-                //SceneLoader.Instance.LoadScene("BattleScene");
-<<<<<<< HEAD
-=======
-                //测试用记得改回来把上面uncomment
->>>>>>> bd8fa95550339842a81f06a5a4d15e8f7b7268d6
-                SceneManager.LoadScene("BattleScene");
+                //Set to battle entrence
+                SceneLoader.Instance.setTransition(2);
+                SceneLoader.Instance.LoadScene("BattleScene");
+                //SceneManager.LoadScene("BattleScene");
                 return;
                 
             }

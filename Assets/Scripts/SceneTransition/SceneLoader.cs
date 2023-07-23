@@ -62,6 +62,7 @@ public class SceneLoader : MonoBehaviour
         // 等待动画播放完成
         while (!currentTrans.isAnimationDone())
             yield return null;
+        disactiveAllTrans();
     }
 
     private void disactiveAllTrans()
