@@ -33,11 +33,19 @@ public class EnemyManager
 
         //敌人id信息
         string[] enemyIds = levelData["EnemyIds"].Split('=');
+        
 
         //敌人位置信息
         string[] enemyPos = levelData["Pos"].Split('=');
 
-        for(int i = 0; i < enemyIds.Length; i++)
+        //如果是boss关卡
+        if (PlayerObject.currentLevel != "Normal")
+        {
+            enemyIds = levelData["Boss"].Split('=');
+            enemyPos = levelData["BossPos"].Split('=');
+        }
+
+        for (int i = 0; i < enemyIds.Length; i++)
         {
             string enemyId = enemyIds[i];
             string[] posArr = enemyPos[i].Split(',');

@@ -158,7 +158,9 @@ public class Enemy : MonoBehaviour
             Defend -= val;
 
             //播放受伤(暂定1)
-            animator.Play("cheche_attack", 0, 0);
+            print(animator.name.Split("_")[0] + "_attack");
+            animator.Play(animator.name.Split("_")[0] + "_hit", 0, 0);
+            //animator.SetBool("Attack", true);
         }
         else
         {
@@ -169,7 +171,8 @@ public class Enemy : MonoBehaviour
             {
                 CurHp = 0;
                 //播放死亡1
-                animator.Play("cheche_attack", 0, 0);
+                //animator.Play("cheche_attack", 0, 0);
+                animator.Play(animator.name.Split("_")[0] + "_die", 0, 0);
 
                 //移除
                 EnemyManager.Instance.DeleteEnemy(this);
@@ -180,12 +183,16 @@ public class Enemy : MonoBehaviour
             else
             {
                 //受伤
-                animator.Play("cheche_attack", 0, 0);
+                animator.Play(animator.name.Split("_")[0] + "_hit", 0, 0);
+                //animator.SetBool("Attack", true);
+
             }
         }
         //刷新UI
         UpdateDefend();
         UpdateHp();
+        
+       
     }
     //隐藏怪物头上行动
     public void HideAction()
@@ -201,7 +208,8 @@ public class Enemy : MonoBehaviour
         HideAction();
 
         //播放对应动画（可以配置到excel，这里默认攻击）
-        animator.Play("cheche_attack");
+        //animator.Play("cheche_attack");
+        animator.Play(animator.name.Split("_")[0] + "_attack", 0, 0);
         //等待某一时间的后执行对应的行为（也可以放1excel）
         yield return new WaitForSeconds(0.5f);//不应该写死等0.5秒
 
