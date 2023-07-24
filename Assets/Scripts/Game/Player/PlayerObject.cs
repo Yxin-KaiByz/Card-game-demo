@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerObject : RoleObject
@@ -75,6 +76,8 @@ public class PlayerObject : RoleObject
             finishBattle = false;
 
         }
+        PlayerBag bag = PlayerBag.Instance;
+        bag.addCardIntoBag();
     }
 
     /*private void Start()
@@ -180,7 +183,11 @@ public class PlayerObject : RoleObject
                 }
                 PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
 
-                SceneLoader.Instance.LoadScene("BattleScene");
+                //随机load一种场景
+                //Set to battle entrence
+               /* SceneLoader.Instance.setTransition(2);
+                SceneLoader.Instance.LoadScene("BattleScene");*/
+                SceneManager.LoadScene("BattleScene");
                 return;
                 
             }

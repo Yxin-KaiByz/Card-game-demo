@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BattleTrans
+  m_Controller: {fileID: 9100000, guid: db088ed0390a3ec4585c2752985bc3de, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f76e5553249ddec4b9605ebfb1b162c5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 512f1f889ee15244d935e84b6f0b88aa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e574fcdc53edd724fa08516ae90db8a5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d399a6bdf2b49424888fb28004c4d0b4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7b7c40f80cd3adb4f98e4846f2329a03, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7b7c40f80cd3adb4f98e4846f2329a03, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 451bc14e82217c24fb82a1d88eb3bb32, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7b7c40f80cd3adb4f98e4846f2329a03, type: 2}

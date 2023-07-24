@@ -10,10 +10,13 @@ public class AddCard : CardItem
     {
         if(TryUse() == true)
         {
+
+
             int val = int.Parse(data["Arg0"]);//抽卡数量
 
             if (FightCardManager.Instance.HasCard() == true)
             {
+
                 //是否有卡抽
                 UIMgr.Instance.GetUI<FightUI>("FightUI").CreateCardItem(val);
                 UIMgr.Instance.GetUI<FightUI>("FightUI").UpdateCardItemPos();
@@ -24,6 +27,8 @@ public class AddCard : CardItem
             }
             else
             {
+                
+               
                 base.OnEndDrag(eventData);
             }
         }

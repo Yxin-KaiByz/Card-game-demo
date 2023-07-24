@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -12,6 +13,7 @@ public class RoleManager
     public List<string> cardList;//存储拥有的卡牌
     public string playerObjectLocation;
     public GameObject player;
+    public PlayerBag bag;
 
     public void Init()
     {
@@ -23,7 +25,10 @@ public class RoleManager
         player.transform.GetComponentInChildren<Transform>().DOScale(new Vector3(124, 124, 1),0);
         
         cardList = new List<string>();
-        //初始四张攻击卡,四张防御
+        bag = PlayerBag.Instance;
+
+
+        /*//初始四张攻击卡,四张防御
         for(int i = 0; i < DEFAULT_ATTACK; i++)
         {
             cardList.Add("1000");
@@ -31,7 +36,14 @@ public class RoleManager
         }
         //两张效果卡
         cardList.Add("1002");
-        cardList.Add("1002");
+        cardList.Add("1002");*/
+        List<string> bagCard = bag.cardList;
+        for(int i = 0; i < bagCard.Count; i++)
+        {
+            cardList.Add(bagCard[i]); 
+        }
+        
+
 
     }
 
