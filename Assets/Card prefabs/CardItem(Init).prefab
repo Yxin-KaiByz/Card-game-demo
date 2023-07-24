@@ -360,7 +360,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 0.5, g: 0.413522, b: 0.413522, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

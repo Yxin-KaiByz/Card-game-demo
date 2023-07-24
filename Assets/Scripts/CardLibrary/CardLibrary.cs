@@ -96,6 +96,12 @@ public class CardLibrary : MonoBehaviour
         return;
     }
 
+    public void Generalcards()
+    {
+        IDdata = GameConfigManager.Instance.GetCardLibraryLines();
+        return;
+    }
+
     public void BackToMenu()
     {
         SceneLoader.instance.LoadScene("Menu");
