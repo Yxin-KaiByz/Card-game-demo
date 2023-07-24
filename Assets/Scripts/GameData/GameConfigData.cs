@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ÓÎÏ·ÅäÖÃ±íÀà Ã¿¸ö¶ÔÏó¶ÔÓ¦Ò»¸ötxtÅäÖÃ±í
+//æ¸¸æˆé…ç½®è¡¨ç±» æ¯ä¸ªå¯¹è±¡å¯¹åº”ä¸€ä¸ªtxté…ç½®è¡¨
 public class GameConfigData
 {
-    //´æ´¢ÅäÖÃ±íÖĞµÄËùÓĞÊı¾İ£¬Ã¿¸öDictionary´æ´¢Ò»ĞĞµÄÄÚÈİ
+    //å­˜å‚¨é…ç½®è¡¨ä¸­çš„æ‰€æœ‰æ•°æ®ï¼Œæ¯ä¸ªDictionaryå­˜å‚¨ä¸€è¡Œçš„å†…å®¹
     private List<Dictionary<string, string>> dataDic;
 
     public GameConfigData(string str)
     {
-        //³õÊ¼»¯list
+        //åˆå§‹åŒ–list
         dataDic = new List<Dictionary<string, string>>();
-        //»»ĞĞÇĞ¸î
+        //æ¢è¡Œåˆ‡å‰²
         string[] lines = str.Split('\n');
-        //µÚÒ»ĞĞÊÇ´æ´¢Êı¾İµÄÀàĞÍ £¨trimÉ¾³ı×Ö·û´®Í·Î²¿Õ¸ñ£©
+        //ç¬¬ä¸€è¡Œæ˜¯å­˜å‚¨æ•°æ®çš„ç±»å‹ ï¼ˆtrimåˆ é™¤å­—ç¬¦ä¸²å¤´å°¾ç©ºæ ¼ï¼‰
         string[] title = lines[0].Trim().Split('\t');//tab
-        //´ÓµÚÈıĞĞ¿ªÊ¼±éÀúÊı¾İ£¬µÚ¶şĞĞÊı¾İÊÇ½âÊÍËµÃ÷, Õâ¸öµÄÖ÷Òª×÷ÓÃÊÇ¼Ó¼üÖµ¶Ô£¬
-        //keyÊÇÀàĞÍvalueÊÇ¾ßÌåÄÚÈİ
+        //ä»ç¬¬ä¸‰è¡Œå¼€å§‹éå†æ•°æ®ï¼Œç¬¬äºŒè¡Œæ•°æ®æ˜¯è§£é‡Šè¯´æ˜, è¿™ä¸ªçš„ä¸»è¦ä½œç”¨æ˜¯åŠ é”®å€¼å¯¹ï¼Œ
+        //keyæ˜¯ç±»å‹valueæ˜¯å…·ä½“å†…å®¹
         for(int i = 2; i < lines.Length; i++)
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -31,17 +31,17 @@ public class GameConfigData
 
             dataDic.Add(dic);
         }
-        //´´½¨ºó»á³õÊ¼»¯Õû¸öÊı¾İÎª¼üÖµ¶Ô´¢´æÔÚdataDicÕâ¸öÊÇÒ»¸ö±íµÄËùÓĞÄÚÈİ¸ù¾İ¸ø¶¨µÄstr
+        //åˆ›å»ºåä¼šåˆå§‹åŒ–æ•´ä¸ªæ•°æ®ä¸ºé”®å€¼å¯¹å‚¨å­˜åœ¨dataDicè¿™ä¸ªæ˜¯ä¸€ä¸ªè¡¨çš„æ‰€æœ‰å†…å®¹æ ¹æ®ç»™å®šçš„str
 
     }
 
-    //·µ»ØÕû¸ölist
+    //è¿”å›æ•´ä¸ªlist
     public List<Dictionary<string,string>> GetLines()
     {
         return dataDic;
     }
 
-    //¸ù¾İidÕÒµ½dictionary
+    //æ ¹æ®idæ‰¾åˆ°dictionary
     public Dictionary<string,string> GetOneById(string id)
     {
         for(int i = 0; i < dataDic.Count; i++)

@@ -26,24 +26,24 @@ public class AttackCardItem : CardItem, IPointerDownHandler
 
 
 
-    //°´ÏÂ
+    //æŒ‰ä¸‹
     public void OnPointerDown(PointerEventData eventData)
     {
-        //²¥·ÅÉùÒô
+        //æ’­æ”¾å£°éŸ³
         BattleAudio.Instance.changeEffect("Cards/draw");
 
-        //ÏÔÊ¾ÇúÏß½çÃæ
+        //æ˜¾ç¤ºæ›²çº¿ç•Œé¢
         UIMgr.Instance.ShowUI<LineUI>("LineUI");
 
 
-        //ÉèÖÃ¿ªÊ¼µãÎ»ÖÃ
+        //è®¾ç½®å¼€å§‹ç‚¹ä½ç½®
         UIMgr.Instance.GetUI<LineUI>("LineUI").SetStarPos(transform.GetComponent<RectTransform>().anchoredPosition + new Vector2(0, 100));
 
-        //Òş²ØÊó±ê
+        //éšè—é¼ æ ‡
         Cursor.visible = false;
-        //¹Ø±Õ1ËùÓĞĞ­Í¬³ÌĞò
+        //å…³é—­1æ‰€æœ‰ååŒç¨‹åº
         StopAllCoroutines();
-        //Æô¶¯Êó²Ù×÷Ğ­Í¬³ÌĞò
+        //å¯åŠ¨é¼ æ“ä½œååŒç¨‹åº
         StartCoroutine(OnMouseDownRight(eventData));
     }
 
@@ -51,7 +51,7 @@ public class AttackCardItem : CardItem, IPointerDownHandler
     {
         while (true)
         {
-            //Èç¹ûÔÙ´Î°´ÏÂÊó±êÓÒ¼üÌø³öÑ­»·1
+            //å¦‚æœå†æ¬¡æŒ‰ä¸‹é¼ æ ‡å³é”®è·³å‡ºå¾ªç¯1
             if (Input.GetMouseButton(1))
             {
                 break;
@@ -66,21 +66,21 @@ public class AttackCardItem : CardItem, IPointerDownHandler
                 
                 ))
             {
-                //ÉèÖÃ¼ıÍ·Î»ÖÃ
+                //è®¾ç½®ç®­å¤´ä½ç½®
                 UIMgr.Instance.GetUI<LineUI>("LineUI").SetEndPos(pos);
-                //½øĞĞÉäÏß¼ì²âÊÇ·ñÅöµ½¹ÖÎï
+                //è¿›è¡Œå°„çº¿æ£€æµ‹æ˜¯å¦ç¢°åˆ°æ€ªç‰©
                 CheckRayToEnemy();
             }
             yield return null;
         }
 
-        //Ìø³öÑ­»·ºó ÏÔÊ¾Êó±ê
+        //è·³å‡ºå¾ªç¯å æ˜¾ç¤ºé¼ æ ‡
         Cursor.visible = true;
-        //¹Ø±ÕÇúÏß
+        //å…³é—­æ›²çº¿
         UIMgr.Instance.CloseUI("LineUI");
     }
 
-    Enemy hitEnemy; //ÉäÏß¼ì²âµ½µĞÈË½Å±¾
+    Enemy hitEnemy; //å°„çº¿æ£€æµ‹åˆ°æ•Œäººè„šæœ¬
     private void CheckRayToEnemy()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -92,34 +92,34 @@ public class AttackCardItem : CardItem, IPointerDownHandler
 
         if (Physics.Raycast(ray, out hit, 10000, LayerMask.GetMask("Enemy")))
         {
-            //print("Ñ¡ÖĞÀ²À²À²À²À²À²À²À²À²À²À²À²À²À²À²");
+            //print("é€‰ä¸­å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦å•¦");
             hitEnemy = hit.transform.GetComponent<Enemy>();
 
-            hitEnemy.OnSelect();//Ñ¡ÖĞ
+            hitEnemy.OnSelect();//é€‰ä¸­
 
-            //Èç¹û°´ÏÂ×ó¼üÊ¹ÓÃ¹¥»÷¿¨
+            //å¦‚æœæŒ‰ä¸‹å·¦é”®ä½¿ç”¨æ”»å‡»å¡
             if(Input.GetMouseButtonDown(0)) {
-                //¹Ø±ÕËùÓĞĞ­Í¬³ÌĞò£»
+                //å…³é—­æ‰€æœ‰ååŒç¨‹åºï¼›
                 StopAllCoroutines();
 
-                //Êó±êÏÔÊ¾
+                //é¼ æ ‡æ˜¾ç¤º
                 Cursor.visible = true;
                 UIMgr.Instance.CloseUI("LineUI");
                 if (TryUse() == true)
                 {
-                    //²¥·ÅÌØĞ§
+                    //æ’­æ”¾ç‰¹æ•ˆ
                     playEffect(hitEnemy.transform.position);
 
-                    //´ò»÷ÌØĞ§
+                    //æ‰“å‡»ç‰¹æ•ˆ
                     BattleAudio.Instance.changeEffect("Effect/sword");
-                    //µĞÈËÊÜÉË
+                    //æ•Œäººå—ä¼¤
                     int val = int.Parse(data["Arg0"]);
                     hitEnemy.Hit(val);
                 
                 }
-                //µĞÈËÎ´Ñ¡ÖĞ
+                //æ•Œäººæœªé€‰ä¸­
                 hitEnemy.OnUnSelect();
-                //ÉèÖÃµĞÈË½Å±¾Îªnull
+                //è®¾ç½®æ•Œäººè„šæœ¬ä¸ºnull
                 hitEnemy = null;
             }
             
@@ -127,7 +127,7 @@ public class AttackCardItem : CardItem, IPointerDownHandler
         }
         else
         {
-            //Î´Éäµ½¹ÖÎï
+            //æœªå°„åˆ°æ€ªç‰©
             if (hitEnemy != null)
             {
                hitEnemy.OnUnSelect();
