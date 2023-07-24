@@ -29,7 +29,7 @@ public class MainLevelManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        levelId = "1001";
+        //levelId = "1002";
 
         GameConfigManager.Instance.Init();
         sceneDic = GameConfigManager.Instance.GetSceneTypeById(levelId);

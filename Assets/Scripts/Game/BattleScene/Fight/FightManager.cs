@@ -24,8 +24,8 @@ public class FightManager : MonoBehaviour
     //≥ı ºªØ Ù–‘
     public void Init()
     {
-        MaxHp = 10;
-        CurHp = 10;
+        MaxHp = PlayerPrefData.Instance.MaxHp;
+        CurHp = PlayerPrefData.Instance.CurHp;
         CurPointCount = 4;
         DefenseCount = 10;
         MaxPointCount = 8;
