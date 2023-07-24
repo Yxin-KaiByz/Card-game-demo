@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -172,6 +172,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2146879558}
     m_Modifications:
     - target: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
@@ -263,6 +264,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 22745327}
   m_SourcePrefab: {fileID: 100100000, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
 --- !u!1 &506932974
 GameObject:
@@ -403,6 +410,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2146879558}
     m_Modifications:
     - target: {fileID: 1093584859487190147, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
@@ -510,6 +518,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 23551651}
   m_SourcePrefab: {fileID: 100100000, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
 --- !u!1 &627996736
 GameObject:
@@ -863,7 +877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 807811391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146879562}
+        m_TargetAssemblyTypeName: CardLibrary, Assembly-CSharp
+        m_MethodName: DrinkCards
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &807811391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,7 +1091,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959260343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146879562}
+        m_TargetAssemblyTypeName: CardLibrary, Assembly-CSharp
+        m_MethodName: AttackCards
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &959260343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,7 +1599,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1220075484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146879562}
+        m_TargetAssemblyTypeName: CardLibrary, Assembly-CSharp
+        m_MethodName: DefenseCards
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1220075484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,7 +1726,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1706,6 +1758,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2146879558}
     m_Modifications:
     - target: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
@@ -1805,6 +1858,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202976414}
   m_SourcePrefab: {fileID: 100100000, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
 --- !u!1 &1383481838
 GameObject:
@@ -1879,6 +1938,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2146879558}
     m_Modifications:
     - target: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
@@ -1970,6 +2030,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8672339420196070574, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494743883}
   m_SourcePrefab: {fileID: 100100000, guid: 64b5b8a41e295634cb513d688fa40025, type: 3}
 --- !u!1 &1494743881 stripped
 GameObject:
@@ -2247,9 +2313,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
