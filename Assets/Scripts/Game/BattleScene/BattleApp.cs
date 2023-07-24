@@ -11,32 +11,32 @@ public class BattleApp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //³õÊ¼»¯ÅäÖÃ±í£¬»á×°ÔÚºÃËùÓĞµÄdata
-        //ÀïÃæÓĞ·â×°ÁË·½·¨»ñÈ¡Ã¿¸ötableµÄÊıÖµ
-        //¿ÉÒÔ¸ù¾İid»ñÈ¡Ò»ĞĞ»òÕßÕû¸ötable
-        //ÒòÎªinitÖĞ»á¸ù¾İÂ·¾¶Ëù¸øµÄtxtÎÄ¼ş×ª»¯ÎªstringÈ¥
-        //instantiate GameConfigData£¬ÔÚÊµÀı»¯µÄ¹ı³ÌÖĞ
-        //¾Í»á°Ñ±íµÄËùÓĞĞÅÏ¢ÀûÓÃ¼üÖµ¶Ô´æÔÚlistÀïÃæ
-        //ÎÒÃÇ¿ÉÒÔÍ¨¹ıidÈ¥Çø·ÖËûÃÇ
+        //åˆå§‹åŒ–é…ç½®è¡¨ï¼Œä¼šè£…åœ¨å¥½æ‰€æœ‰çš„data
+        //é‡Œé¢æœ‰å°è£…äº†æ–¹æ³•è·å–æ¯ä¸ªtableçš„æ•°å€¼
+        //å¯ä»¥æ ¹æ®idè·å–ä¸€è¡Œæˆ–è€…æ•´ä¸ªtable
+        //å› ä¸ºinitä¸­ä¼šæ ¹æ®è·¯å¾„æ‰€ç»™çš„txtæ–‡ä»¶è½¬åŒ–ä¸ºstringå»
+        //instantiate GameConfigDataï¼Œåœ¨å®ä¾‹åŒ–çš„è¿‡ç¨‹ä¸­
+        //å°±ä¼šæŠŠè¡¨çš„æ‰€æœ‰ä¿¡æ¯åˆ©ç”¨é”®å€¼å¯¹å­˜åœ¨listé‡Œé¢
+        //æˆ‘ä»¬å¯ä»¥é€šè¿‡idå»åŒºåˆ†ä»–ä»¬
         baseBackground = "Ice2Prefab";
         GameConfigManager.Instance.Init();
 
-        //Í¨¹ı±³¾°ÃûÏÔÊ¾±³¾°
+        //é€šè¿‡èƒŒæ™¯åæ˜¾ç¤ºèƒŒæ™¯
         UIMgr.Instance.ShowUI<UIBackground>(baseBackground);
         
-        //³õÊ¼»¯ÓÃ»§ĞÅÏ¢
+        //åˆå§‹åŒ–ç”¨æˆ·ä¿¡æ¯
         RoleManager.Instance.Init();
 
 
-        //test, »ñÈ¡idÎª1001µÄ¿¨ÅÆµÄÃû×Ö
-        /*string name = GameConfigManager.Instance.GetCardById("1001")["Name"];
+        //test, è·å–idä¸º1001çš„å¡ç‰Œçš„åå­—
+        string name = GameConfigManager.Instance.GetCardById("1001")["Name"];
         print(name);
 
         //test2
         string name2 = GameConfigManager.Instance.GetCardById("1002")["Des"];
-        print(name2);*/
+        print(name2);
 
-        //³õÊ¼»¯Õ½¶·½çÃæ
+        //åˆå§‹åŒ–æˆ˜æ–—ç•Œé¢
         FightManager.Instance.ChnageType(E_FightType.Init);
 
     }

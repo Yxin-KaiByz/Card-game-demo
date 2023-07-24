@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Õû¸öÓÎÏ·ÅäÖÃ±íµÄ¹ÜÀíÆ÷
+//æ•´ä¸ªæ¸¸æˆé…ç½®è¡¨çš„ç®¡ç†å™¨
 public class GameConfigManager
 {
     public static GameConfigManager Instance = new GameConfigManager();
@@ -12,15 +12,16 @@ public class GameConfigManager
     private GameConfigData levelData;//level
     private GameConfigData cardTypeData;//card Type
     private GameConfigData sceneData; //background scene
+    private GameConfigData cardLibrary; //card library
 
-    //ÓÃÀ´load txtÎÄ¼şÍ¨¹ı.txtµÄ·½·¨¿ÉÒÔ×ª»»³Éstring
+    //ç”¨æ¥load txtæ–‡ä»¶é€šè¿‡.txtçš„æ–¹æ³•å¯ä»¥è½¬æ¢æˆstring
     private TextAsset textAsset;
 
-    //³õÊ¼»¯ÅäÖÃÎÄ¼ş£¨txtÎÄ¼ş´æ´¢µ½ÄÚ´æÖĞ£©
+    //åˆå§‹åŒ–é…ç½®æ–‡ä»¶ï¼ˆtxtæ–‡ä»¶å­˜å‚¨åˆ°å†…å­˜ä¸­ï¼‰
     public void Init()
     {
         textAsset = Resources.Load<TextAsset>("Data/card");
-        //°ÑÂ·¾¶¸øGameConfigDataÔÚinstantiateµÄÊ±ºò¾Í»áÍê³É¼üÖµ¶ÔµÄ´æ´¢
+        //æŠŠè·¯å¾„ç»™GameConfigDataåœ¨instantiateçš„æ—¶å€™å°±ä¼šå®Œæˆé”®å€¼å¯¹çš„å­˜å‚¨
         cardData = new GameConfigData(textAsset.text);
         
         textAsset = Resources.Load<TextAsset>("Data/enemy");
@@ -35,9 +36,11 @@ public class GameConfigManager
         textAsset = Resources.Load<TextAsset>("Data/scene");
         sceneData = new GameConfigData(textAsset.text);
 
+        textAsset = Resources.Load<TextAsset>("Data/cardLibrary");
+        cardLibrary = new GameConfigData(textAsset.text);
     }
 
-    //»ñÈ¡¿¨ÅÆµÄ´æ´¢¼üÖµ¶ÔµÄlist
+    //è·å–å¡ç‰Œçš„å­˜å‚¨é”®å€¼å¯¹çš„list
     public List<Dictionary<string,string>> GetCardLines()
     {
         return cardData.GetLines();
@@ -58,7 +61,17 @@ public class GameConfigManager
         return sceneData.GetLines();
     }
 
-    //Í¨¹ıid»ñÈ¡¿¨ÅÆ
+    public List<Dictionary<string, string>> GetCardTypeLines()
+    {
+        return cardTypeData.GetLines();
+    }
+
+    public List<Dictionary<string, string>> GetCardLibraryLines()
+    {
+        return cardLibrary.GetLines();
+    }
+
+    //é€šè¿‡idè·å–å¡ç‰Œ
     public Dictionary<string, string> GetCardById(string id)
     {
         return cardData.GetOneById(id);
@@ -83,4 +96,5 @@ public class GameConfigManager
     {
         return sceneData.GetOneById(id);
     }
+
 }

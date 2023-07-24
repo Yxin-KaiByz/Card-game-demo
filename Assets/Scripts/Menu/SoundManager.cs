@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource[] audioLs;
     private AudioSource bgSource;
     private AudioSource buttonEffect;
+    private AudioSource title;
     //private bool musicState;
     private AudioClip hoverClip;
     private AudioClip clickClip;
@@ -29,6 +30,7 @@ public class SoundManager : MonoBehaviour
         audioLs = GetComponents<AudioSource>();
         bgSource = audioLs[0];
         buttonEffect = audioLs[1];
+        title = audioLs[2];
         hoverClip = Resources.Load<AudioClip>("SFX/Button_Hover");
         clickClip = Resources.Load<AudioClip>("SFX/Button_Click");
         SettingSlider.Instance.updatePanelInfor();
@@ -58,7 +60,10 @@ public class SoundManager : MonoBehaviour
         //¿ªÆô´ú±ímute
         buttonEffect.mute = !isOpen;
     }
-
+    public void playTitle()
+    {
+        title.Play();
+    }
     public void PlayBgTheme()
     {
         bgSource.loop = true;

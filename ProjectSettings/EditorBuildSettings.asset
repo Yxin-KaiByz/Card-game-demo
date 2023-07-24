@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 6fad43500a1b4a6429bb3b68e87485a6
+  - enabled: 1
+    path: Assets/Scenes/CardLibrary.unity
+    guid: afc9aaa4b052fbd4ba968b42e9097861
   m_configObjects: {}

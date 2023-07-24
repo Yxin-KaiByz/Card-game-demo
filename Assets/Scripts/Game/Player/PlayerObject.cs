@@ -26,15 +26,15 @@ public class PlayerObject : RoleObject
         instance = this;
         currentLevel = "Normal";
         fightingObject = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
-        //¸¸ÀàÏà¹ØµÄAwakeÂß¼­Ò»¶¨¸ÅÒª±£Áô
+        //çˆ¶ç±»ç›¸å…³çš„Awakeé€»è¾‘ä¸€å®šæ¦‚è¦ä¿ç•™
         base.Awake();
         playerCollider = GetComponent<Collider2D>();
-        //Ñ¡Ôñ¶ÔÓ¦µÄÍæ¼ÒmodelÔ¤ÉèÌå²¢¹ÒÔØÓëPlayer
+        //é€‰æ‹©å¯¹åº”çš„ç©å®¶modelé¢„è®¾ä½“å¹¶æŒ‚è½½ä¸Player
         //loadCharModel(characterData.Instance.characterID);
         loadCharModel(0);
-        //¿ªÆôÊäÈë¿ØÖÆ
+        //å¼€å¯è¾“å…¥æ§åˆ¶
         InputMgr.GetInstance().StartOrEndCheck(true);
-        //»ñÈ¡ÊäÈëÈ¨ÏŞ
+        //è·å–è¾“å…¥æƒé™
         GetController();
         if (finishBattle)
         {
@@ -46,11 +46,11 @@ public class PlayerObject : RoleObject
             {
                 print("Not null");
             }*/
-            //¸ù¾İÒ»¹²´ò°ÜÁË¼¸¸öµĞÈË£¬À´ÕÒµ½playerprefÖ®Ç°´æ´¢µÄ´İ»Ù¹ıµÄµĞÈË£¬ÖØĞÂÒ»Æğ´İ»Ù
+            //æ ¹æ®ä¸€å…±æ‰“è´¥äº†å‡ ä¸ªæ•Œäººï¼Œæ¥æ‰¾åˆ°playerprefä¹‹å‰å­˜å‚¨çš„æ‘§æ¯è¿‡çš„æ•Œäººï¼Œé‡æ–°ä¸€èµ·æ‘§æ¯
             for(int i = 0; i < NUMBER_OF_DESTORIED;  i++)
             {
                 FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + i) as FightingObject;
-                //¸Ä±äÈËÎïÎ»ÖÃ
+                //æ”¹å˜äººç‰©ä½ç½®
                 if (i ==  NUMBER_OF_DESTORIED - 1)
                 {
                     transform.position = new Vector3(temp.currentX, transform.position.y, transform.position.z);
@@ -105,15 +105,15 @@ public class PlayerObject : RoleObject
     protected override void Update()
     {
         //print(finishBattle);
-        //Ò»¶¨Òª±£³ÖÕâ¸öbase.UpdateµÄ´æÔÚ ÒòÎª ÒÆ¶¯Âß¼­ ÊÇĞ´ÔÚ¸¸ÀàÖĞµÄ
-        //³ı·ÇÖ®ºóÄãÒªÖØĞ´ ²Å²»ĞèÒªËü
+        //ä¸€å®šè¦ä¿æŒè¿™ä¸ªbase.Updateçš„å­˜åœ¨ å› ä¸º ç§»åŠ¨é€»è¾‘ æ˜¯å†™åœ¨çˆ¶ç±»ä¸­çš„
+        //é™¤éä¹‹åä½ è¦é‡å†™ æ‰ä¸éœ€è¦å®ƒ
         base.Update();
         //if (playerCollider.IsTouching(EnemySpawnPoint.Instance.spawnPointCollider))
         bool touchingOrNot = false;
         Collider2D collider = null;
         string collidingName = null;
         
-        //¼ì²éÊÇ·ñºÍÅö×²Ìå·¢ÉúÅö×²£¬Èç¹ûÓĞ¾Í¸Ä±äpromptµÄÎ»ÖÃ
+        //æ£€æŸ¥æ˜¯å¦å’Œç¢°æ’ä½“å‘ç”Ÿç¢°æ’ï¼Œå¦‚æœæœ‰å°±æ”¹å˜promptçš„ä½ç½®
         foreach(Collider2D each in EnemySpawnPoint.Instance.spawnPointCollider){
             if (playerCollider.IsTouching(each))
             {
@@ -157,24 +157,24 @@ public class PlayerObject : RoleObject
                 }
                 DontDestroyOnLoad(GameObject.Find("LevelBackground"));*/
                 print(collidingName);
-                //ÉèÖÃÅö×²ÎïÌåºÍÅö×²Î»ÖÃ·½±ã¸Ä±äÈËÎïÎ»ÖÃµ±Õ½¶·½áÊø
+                //è®¾ç½®ç¢°æ’ç‰©ä½“å’Œç¢°æ’ä½ç½®æ–¹ä¾¿æ”¹å˜äººç‰©ä½ç½®å½“æˆ˜æ–—ç»“æŸ
                 fightingObject.fightingName = collidingName;
                 fightingObject.currentX = collider.transform.position.x;
-                //³Ö¾Ã»¯´òÁË¼¸¸ö¹Ö
+                //æŒä¹…åŒ–æ‰“äº†å‡ ä¸ªæ€ª
                 PlayerPrefsDataMgr.Instance.SaveData(fightingObject, "FightingWith" + NUMBER_OF_DESTORIED);
                 FightingObject temp = PlayerPrefsDataMgr.Instance.LoadData(typeof(FightingObject), "FightingWith" + NUMBER_OF_DESTORIED) as FightingObject;
                 
                 print("I stored " + temp.fightingName);
                 EnemySpawnPoint.Instance.spawnPointCollider.Remove(collider);
                 NUMBER_OF_DESTORIED++;
-                //¸ü¸ÄtxtÊı¾İ
+                //æ›´æ”¹txtæ•°æ®
                 /*Dictionary<string , string> data = GameConfigManager.Instance.GetSceneTypeById("1001");
                 if(currentLevel == "Normal")
                 {
                     data["NormalEnemyAmount"] = (int.Parse(data["NormalEnemyAmount"]) - 1).ToString();
                     print("after change the normal enemy amount is : " + data["NormalEnemyAmount"]);
                 }*/
-                //ÄÃÈ¥Êı¾İ
+                //æ‹¿å»æ•°æ®
                 LevelPlayerPref levelData = PlayerPrefsDataMgr.Instance.LoadData(typeof(LevelPlayerPref), "LevelPref") as LevelPlayerPref;
                 if (currentLevel == "Normal")
                 {
@@ -183,10 +183,11 @@ public class PlayerObject : RoleObject
                 }
                 PlayerPrefsDataMgr.Instance.SaveData(levelData, "LevelPref");
 
-                //Ëæ»úloadÒ»ÖÖ³¡¾°
-                //SceneLoader.Instance.LoadScene("BattleScene");
-                //²âÊÔÓÃ¼ÇµÃ¸Ä»ØÀ´°ÑÉÏÃæuncomment
-                SceneManager.LoadScene("BattleScene");
+                //éšæœºloadä¸€ç§åœºæ™¯
+                //Set to battle entrence
+                SceneLoader.instance.setTransition(2);
+                SceneLoader.instance.LoadScene("BattleScene");
+                // SceneManager.LoadScene("BattleScene");
                 return;
                 
             }
@@ -196,7 +197,7 @@ public class PlayerObject : RoleObject
         }
     }
     /// <summary>
-    /// Í¨¹ıÀ´×ÔmenuµÄCharID¼ÓÔØ½ÇÉ«Ô¤ÉèÌå£¬²¢¹ÒÔØÎª×Ó¶ÔÏó
+    /// é€šè¿‡æ¥è‡ªmenuçš„CharIDåŠ è½½è§’è‰²é¢„è®¾ä½“ï¼Œå¹¶æŒ‚è½½ä¸ºå­å¯¹è±¡
     /// </summary>
     /// <param name="CharID"></param>
     public void loadCharModel(int CharID)
@@ -226,47 +227,47 @@ public class PlayerObject : RoleObject
         playerModel.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
     }
     /// <summary>
-    /// ¸øÓè¿ØÖÆÈ¨
+    /// ç»™äºˆæ§åˆ¶æƒ
     /// </summary>
     public void GetController()
     {
-        //ÊÂ¼şÖĞĞÄ ÓĞ¼Ó ¾ÍÓĞ¼õ Ò»¶¨²»ÒªÍùÀïÃæ´« ÄÇÃ´´ó±í´ïÊ½ Ò»¶¨ÊÇÔÚÏÂ·½È¥ÉùÃ÷Ò»¸öº¯Êı
+        //äº‹ä»¶ä¸­å¿ƒ æœ‰åŠ  å°±æœ‰å‡ ä¸€å®šä¸è¦å¾€é‡Œé¢ä¼  é‚£ä¹ˆå¤§è¡¨è¾¾å¼ ä¸€å®šæ˜¯åœ¨ä¸‹æ–¹å»å£°æ˜ä¸€ä¸ªå‡½æ•°
         EventCenter.GetInstance().AddEventListener<float>("Horizontal", CheckX);
         EventCenter.GetInstance().AddEventListener<float>("Vertical", CheckY);
-        //¼àÌı°´¼ü°´ÏÂÄÚÈİ
+        //ç›‘å¬æŒ‰é”®æŒ‰ä¸‹å†…å®¹
         EventCenter.GetInstance().AddEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
     }
 
     /// <summary>
-    /// °ş¶á¿ØÖÆÈ¨
+    /// å‰¥å¤ºæ§åˆ¶æƒ
     /// </summary>
     public void RemoveController()
     {
-        //ÊÂ¼şÖĞĞÄ ÓĞ¼Ó ¾ÍÓĞ¼õ Ò»¶¨²»ÒªÍùÀïÃæ´« ÄÇÃ´´ó±í´ïÊ½ Ò»¶¨ÊÇÔÚÏÂ·½È¥ÉùÃ÷Ò»¸öº¯Êı
+        //äº‹ä»¶ä¸­å¿ƒ æœ‰åŠ  å°±æœ‰å‡ ä¸€å®šä¸è¦å¾€é‡Œé¢ä¼  é‚£ä¹ˆå¤§è¡¨è¾¾å¼ ä¸€å®šæ˜¯åœ¨ä¸‹æ–¹å»å£°æ˜ä¸€ä¸ªå‡½æ•°
         EventCenter.GetInstance().RemoveEventListener<float>("Horizontal", CheckX);
         EventCenter.GetInstance().RemoveEventListener<float>("Vertical", CheckY);
-        //¼àÌı°´¼ü°´ÏÂÄÚÈİ
+        //ç›‘å¬æŒ‰é”®æŒ‰ä¸‹å†…å®¹
         EventCenter.GetInstance().RemoveEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
     }
 
     private void CheckX(float x)
     {
-        //x ¾Í»áÊÇ -1 0 1Èı¸öÖµµÄÊı 
-        // °´ A Îª-1  ²»°´Îª0  °´DÎª1
-        //»ñÈ¡ºáÏòÊäÈë·½Ïò 
+        //x å°±ä¼šæ˜¯ -1 0 1ä¸‰ä¸ªå€¼çš„æ•° 
+        // æŒ‰ A ä¸º-1  ä¸æŒ‰ä¸º0  æŒ‰Dä¸º1
+        //è·å–æ¨ªå‘è¾“å…¥æ–¹å‘ 
         moveDir.x = x;
     }
 
     private void CheckY(float y)
     {
-        //x ¾Í»áÊÇ -1 0 1Èı¸öÖµµÄÊı 
-        // °´ S Îª-1  ²»°´Îª0  °´WÎª1
-        //»ñÈ¡×İÏòÊäÈë·½Ïò
+        //x å°±ä¼šæ˜¯ -1 0 1ä¸‰ä¸ªå€¼çš„æ•° 
+        // æŒ‰ S ä¸º-1  ä¸æŒ‰ä¸º0  æŒ‰Wä¸º1
+        //è·å–çºµå‘è¾“å…¥æ–¹å‘
         moveDir.y = y;
     }
 
     /// <summary>
-    /// ¼ì²âÍæ¼Ò ³ıÒÆ¶¯ÒâÍâµÄ ÊäÈëÄÚÈİ
+    /// æ£€æµ‹ç©å®¶ é™¤ç§»åŠ¨æ„å¤–çš„ è¾“å…¥å†…å®¹
     /// </summary>
     /// <param name="key"></param>
     private void CheckKeyDown(KeyCode key)
@@ -274,16 +275,16 @@ public class PlayerObject : RoleObject
         switch (key)
         {
             case KeyCode.J:
-                print("J¼ü");
+                print("Jé”®");
                 break;
             case KeyCode.K:
-                print("K¼ü");
+                print("Ké”®");
                 break;
             case KeyCode.L:
-                print("L¼ü");
+                print("Lé”®");
                 break;
             case KeyCode.Space:
-                print("Space¼ü");
+                print("Spaceé”®");
                 break;
         }
     }
@@ -293,7 +294,7 @@ public class PlayerObject : RoleObject
 
     private void OnDestroy()
     {
-        //ÊÂ¼ş ÓĞ¼Ó¾ÍÓĞ¼õ ÒÆ³ıÊ±Ò»¶¨Òª×¢ÏúÊÂ¼ş
+        //äº‹ä»¶ æœ‰åŠ å°±æœ‰å‡ ç§»é™¤æ—¶ä¸€å®šè¦æ³¨é”€äº‹ä»¶
         RemoveController();
     }
 }

@@ -28,24 +28,24 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private int index;
 
-    //Êó±ê½øÈë
+    //é¼ æ ‡è¿›å…¥
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //ÂıÂı·Å´óµ½1.5Ã¿´ÎÔö¼Ó0.25
+        //æ…¢æ…¢æ”¾å¤§åˆ°1.5æ¯æ¬¡å¢åŠ 0.25
         transform.DOScale(1.5f, 0.25f);
-        //ÕâÁ½²½ÊÇ¸Ä±ä¿¨ÅÆµÄäÖÈ¾Ë³Ğò£¬ÒòÎª·Å´óÒªÕÚµ²¹ØÏµ
-        //ËùÒÔ°ÑËûÉèÖÃ³É×îºóäÖÈ¾
+        //è¿™ä¸¤æ­¥æ˜¯æ”¹å˜å¡ç‰Œçš„æ¸²æŸ“é¡ºåºï¼Œå› ä¸ºæ”¾å¤§è¦é®æŒ¡å…³ç³»
+        //æ‰€ä»¥æŠŠä»–è®¾ç½®æˆæœ€åæ¸²æŸ“
         index = transform.GetSiblingIndex();
         transform.SetAsLastSibling();
-        //Í¨¹ı±ß¿ò¸ø¿¨ÅÆÉÏÉ«
+        //é€šè¿‡è¾¹æ¡†ç»™å¡ç‰Œä¸Šè‰²
         transform.Find("bg").GetComponent<Image>().material.SetColor("_lineColor", Color.yellow);
         transform.Find("bg").GetComponent<Image>().material.SetFloat("_lineWidth", 10);
     }
 
-    //Êó±êÀë¿ª
+    //é¼ æ ‡ç¦»å¼€
     public void OnPointerExit(PointerEventData eventData)
     {
-        //»Øµ½1
+        //å›åˆ°1
         transform.DOScale(1, 0.25f);
         transform.SetSiblingIndex(index);
         transform.Find("bg").GetComponent<Image>().material.SetColor("_lineColor", Color.black);
@@ -54,19 +54,19 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Start()
     {
-        //¼ÓÔØ¿¨ÃæÉÏµÄÊı¾İ
+        //åŠ è½½å¡é¢ä¸Šçš„æ•°æ®
         transform.Find("bg").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["BgIcon"]);
         transform.Find("bg/icon").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["Icon"]);
         transform.Find("bg/msgTxt").GetComponent<Text>().text = string.Format(data["Des"],data["Arg0"]);
         transform.Find("bg/nameTxt").GetComponent<Text>().text = data["Name"];
         transform.Find("bg/useTxt").GetComponent<Text>().text = data["Expend"];
-        //ÏÈ»ñµÃ¿¨ÅÆÀàĞÍ£¬È»ºóÍ¨¹ıÕâ¸öÀàĞÍÔÙ»ñµÃÃû×Ö
+        //å…ˆè·å¾—å¡ç‰Œç±»å‹ï¼Œç„¶åé€šè¿‡è¿™ä¸ªç±»å‹å†è·å¾—åå­—
         transform.Find("bg/Text").GetComponent<Text>().text = GameConfigManager.Instance.GetCardTypeById(data["Type"])["Name"];
 
-        //ÉèÖÃbg±³¾°imageµÄÍâ±ß¿ò²ÄÖÊ
+        //è®¾ç½®bgèƒŒæ™¯imageçš„å¤–è¾¹æ¡†æè´¨
         transform.Find("bg").GetComponent<Image>().material = Instantiate(Resources.Load<Material>("Mats/outline"));
     }
-    Vector2 initPos;//ÍÏ×§¿ªÊ¼¼ÇÂ¼¿¨ÅÆÎ»ÖÃ
+    Vector2 initPos;//æ‹–æ‹½å¼€å§‹è®°å½•å¡ç‰Œä½ç½®
 
     //end drag
     public virtual void OnEndDrag(PointerEventData eventData)
@@ -97,7 +97,7 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         initPos = transform.GetComponent<RectTransform>().anchoredPosition;
 
-        //²¥·ÅÉùÒô
+        //æ’­æ”¾å£°éŸ³
 
         BattleAudio.Instance.changeEffect(drawEffect);
 
@@ -108,15 +108,15 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //try to use the card
     public virtual bool TryUse()
     {
-        //ËùĞè·ÑÓÃ
+        //æ‰€éœ€è´¹ç”¨
         int cost = int.Parse(data["Expend"]);
 
         if(cost > FightManager.Instance.CurPointCount)
         {
-            //·ÑÓÃ²»×ã
+            //è´¹ç”¨ä¸è¶³
             BattleAudio.Instance.changeEffect("SFX/Effect/Loss");
 
-            //ÌáÊ¾
+            //æç¤º
             UIMgr.Instance.ShowTip("No Enough Point", Color.red);
 
             return false;
@@ -125,17 +125,17 @@ public class CardItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             FightManager.Instance.CurPointCount -= cost;
-            //Ë¢ĞÂ·ÑÓÃÎÄ±¾
+            //åˆ·æ–°è´¹ç”¨æ–‡æœ¬
             UIMgr.Instance.GetUI<FightUI>("FightUI").UpdatePoint();
 
-            //Ê¹ÓÃµÄ¿¨ÅÆÉ¾³ı
+            //ä½¿ç”¨çš„å¡ç‰Œåˆ é™¤
             UIMgr.Instance.GetUI<FightUI>("FightUI").RemoveCard(this);
 
             return true;
         }
     }
 
-    //´´½¨¿¨ÅÆÊ¹ÓÃºóµÄÌØĞ§
+    //åˆ›å»ºå¡ç‰Œä½¿ç”¨åçš„ç‰¹æ•ˆ
     public void playEffect(Vector3 pos)
     {
         GameObject effectObj = Instantiate(Resources.Load(data["Effects"])) as GameObject;

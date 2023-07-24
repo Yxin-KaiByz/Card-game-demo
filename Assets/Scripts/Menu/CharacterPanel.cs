@@ -47,9 +47,9 @@ public class CharacterPanel : BasePanel<CharacterPanel>
 
     public void startGame()
     {
-        SceneLoader.Instance.setTransition(1);
+        SceneLoader.instance.setTransition(1);
         SoundManager.Instance.PlayButtonClick();
-        SceneLoader.Instance.LoadScene("Main");
+        SceneLoader.instance.LoadScene("Main");
     }
     public void characterOne()
     {

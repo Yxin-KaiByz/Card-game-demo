@@ -20,7 +20,7 @@ public class BeginPanel : BasePanel<BeginPanel>
     // Update is called once per frame
     void Update()
     {
-        if (SceneLoader.Instance.isTransitionDone() && !SoundManager.Instance.isAudioPlaying(0))
+        if (SceneLoader.instance.isTransitionDone() && !SoundManager.Instance.isAudioPlaying(0))
         {
             SoundManager.Instance.PlayBgTheme();
         }
@@ -34,7 +34,10 @@ public class BeginPanel : BasePanel<BeginPanel>
 
     public void cardLibrary()
     {
+
         SoundManager.Instance.PlayButtonClick();
+        SceneLoader.instance.setTransition(1);
+        SceneLoader.instance.LoadScene("CardLibrary");
     }
 
     public void settingList()
