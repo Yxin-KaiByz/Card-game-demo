@@ -55,6 +55,10 @@ public class CardLibrary : MonoBehaviour
         }
     }
     
+    public void BackToMenu()
+    {
+        SceneLoader.Instance.LoadScene("Menu");
+    }
     public void next()
     {
     if (page < pagelimit)

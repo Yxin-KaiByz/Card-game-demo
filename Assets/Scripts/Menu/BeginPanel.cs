@@ -34,7 +34,10 @@ public class BeginPanel : BasePanel<BeginPanel>
 
     public void cardLibrary()
     {
+
         SoundManager.Instance.PlayButtonClick();
+        SceneLoader.Instance.setTransition(1);
+        SceneLoader.Instance.LoadScene("CardLibrary");
     }
 
     public void settingList()
