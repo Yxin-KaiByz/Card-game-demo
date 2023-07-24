@@ -6,21 +6,36 @@ using System;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static SceneLoader instance;
+    public static SceneLoader instance;
     public Transition currentTrans;
-    public static SceneLoader Instance => instance;
+    private Canvas canvas;
+    private bool isTitlePlayed = false;
     // Start is called before the first frame update
     void Start()
     {
+        bindMainCamera();
+        currentTrans.gameObject.SetActive(true);
         StartCoroutine(enteringScene());
+        if(!isTitlePlayed ) { 
+            SoundManager.Instance.playTitle();
+            isTitlePlayed = true;
+        }
+        
     }
 
     private void Awake()
     {
-        instance = this;
-        currentTrans.gameObject.SetActive(true);
+        if (instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        canvas = GetComponent<Canvas>();
     }
-
     private IEnumerator enteringScene()
     {
         currentTrans.EndTrans();
@@ -35,6 +50,7 @@ public class SceneLoader : MonoBehaviour
         AsyncOperation loading = SceneManager.LoadSceneAsync(sceneName);
         loading.allowSceneActivation = false;
         //play start transition
+        Debug.Log("startTrans--Start");
         currentTrans.StartTrans();
         //Wait for 1 frame
         yield return null;
@@ -47,10 +63,11 @@ public class SceneLoader : MonoBehaviour
         {
             yield return null;
         }
+        Debug.Log("startTrans--Done");
         loading.allowSceneActivation = true;
         while (loading.progress != 1)
             yield return null;
-
+        Debug.Log("endTrans--Start");
         // 结束过场
         currentTrans.EndTrans();
 
@@ -62,6 +79,7 @@ public class SceneLoader : MonoBehaviour
         // 等待动画播放完成
         while (!currentTrans.isAnimationDone())
             yield return null;
+        Debug.Log("endTrans--Done");
         disactiveAllTrans();
     }
 
@@ -90,8 +108,16 @@ public class SceneLoader : MonoBehaviour
     {
         return currentTrans.isAnimationDone();
     }
+    public void bindMainCamera()
+    {
+        canvas.worldCamera = Camera.main;
+    }
     // Update is called once per frame
     void Update()
     {
+        if (canvas.worldCamera == null)
+        {
+            bindMainCamera();
+        }
     }
 }

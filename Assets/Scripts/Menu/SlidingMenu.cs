@@ -12,7 +12,6 @@ public class SlidingMenu: MonoBehaviour
         slideAnimator = GetComponent<Animator>();
         instance = this;
     }
-    
     public void SlideLeft()
     {
         slideAnimator.SetTrigger("Left");

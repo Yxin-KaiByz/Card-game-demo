@@ -34,9 +34,9 @@ public class CardLibrary : MonoBehaviour
         IDdata = GameConfigManager.Instance.GetCardLibraryLines();
         int size = IDdata.Count-1; // size = 7
         pagelimit = (size-1) / 4; // 4 cards per page; 
-        print("size is " + size);
+        /*print("size is " + size);
         print("pagelimit is "+ pagelimit);
-        print("current page is "+ page);
+        print("current page is "+ page);*/
         for(int i = 0; i < 4; i++)
         {
             if (page* 4 + i < size)
@@ -57,7 +57,7 @@ public class CardLibrary : MonoBehaviour
     
     public void BackToMenu()
     {
-        SceneLoader.Instance.LoadScene("Menu");
+        SceneLoader.instance.LoadScene("Menu");
     }
     public void next()
     {
