@@ -118,6 +118,7 @@ public class MainLevelManager : MonoBehaviour
             teleport.AddComponent<Teleport>();
 
         }
+        
     }
 
     public void changeToBossBackground()

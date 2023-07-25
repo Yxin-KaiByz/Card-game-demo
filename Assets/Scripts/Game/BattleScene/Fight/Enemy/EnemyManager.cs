@@ -41,8 +41,17 @@ public class EnemyManager
         //如果是boss关卡
         if (PlayerObject.currentLevel != "Normal")
         {
-            enemyIds = levelData["Boss"].Split('=');
-            enemyPos = levelData["BossPos"].Split('=');
+            if(MainLevelManager.levelId == "1002")
+            {
+                enemyIds = levelData["Boss2"].Split('=');
+                enemyPos = levelData["BossPos2"].Split('=');
+            }
+            else
+            {
+                enemyIds = levelData["Boss"].Split('=');
+                enemyPos = levelData["BossPos"].Split('=');
+            }
+            
         }
 
         for (int i = 0; i < enemyIds.Length; i++)

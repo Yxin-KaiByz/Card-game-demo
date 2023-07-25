@@ -172,6 +172,7 @@ public class Enemy : MonoBehaviour
                 CurHp = 0;
                 //≤•∑≈À¿Õˆ1
                 //animator.Play("cheche_attack", 0, 0);
+                print(animator.name.Split("_")[0] + "_die");
                 animator.Play(animator.name.Split("_")[0] + "_die", 0, 0);
 
                 //“∆≥˝
@@ -183,6 +184,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 // ‹…À
+                print(animator.name.Split("_")[0]);
                 animator.Play(animator.name.Split("_")[0] + "_hit", 0, 0);
                 //animator.SetBool("Attack", true);
 
