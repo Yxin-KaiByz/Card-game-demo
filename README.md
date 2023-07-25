@@ -18,7 +18,7 @@ Encounter classic enemies from the honkai universe!
 ![Character selection](https://github.com/Yxin-KaiByz/Card-game-demo/blob/main/demo_screenshot/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(33).png?raw=true)
 ![Level scene](https://github.com/Yxin-KaiByz/Card-game-demo/blob/main/demo_screenshot/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(34).png?raw=true)
 ## Acknowledgements
-#### Tutorials
+#### Reference
  - [独立开发者C酱](https://space.bilibili.com/641563)
  - [TanLaoShi --唐老狮--](https://space.bilibili.com/79983517)
  - [Scene transition](https://www.bing.com/search?q=unity+%E8%BD%AC%E5%9C%BA&qs=n&form=QBRE&sp=-1&lq=0&pq=unity+zhuan%27chang&sc=0-17&sk=&cvid=0FC90924DA244A1E8ADE6403E9547095&ghsh=0&ghacc=0&ghpl=)
