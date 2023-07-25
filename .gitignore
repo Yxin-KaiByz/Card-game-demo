@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-*.mp4
+#*.mp4
 CustomScene1/
 CustomScene2/
 CustomScene3/
