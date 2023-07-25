@@ -21,7 +21,8 @@ namespace Assets.Scripts.CardLibrary
 
         public void Update()
         {
-            active = IsActive();
+            //active = IsActive();
+            active = true;
             if (data != null)
             {
                 loadImage(active);
