@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,13 +36,13 @@ namespace Assets.Scripts.CardLibrary
             {
                 if (IDdata[i]["Id"] == data["Id"])
                 {
+                    Type type = IDdata[i]["actived"].GetType();
+                    // print(IDdata[i]["Id"] + "   It is "+ IDdata[i]["actived"] + type);
                     if (IDdata[i]["actived"] == "1")
                     {
                         status = true;
+                        // print("status is " + status + "ID is " + IDdata[i]["Id"]);
                     }
-                }else
-                {
-                    status = false;
                 }
             }
             return status;
@@ -51,7 +52,8 @@ namespace Assets.Scripts.CardLibrary
         {
             if (active)
             {
-                //加载卡面上的数据
+                // print("Actived Data" + data["Id"] + active );
+;                //加载卡面上的数据
                 transform.Find("bg").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["BgIcon"]);
                 transform.Find("bg").GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 transform.Find("bg/icon").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["Icon"]);
@@ -66,7 +68,7 @@ namespace Assets.Scripts.CardLibrary
             }
             else
             {
-                print("not active");
+                // print("Non -Actived Data" + data["Id"] + active);
                 transform.Find("bg").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["BgIcon"]);
                 transform.Find("bg").GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1);
                 transform.Find("bg/icon").GetComponent<Image>().sprite = Resources.Load<Sprite>(data["Icon"]);
@@ -78,7 +80,6 @@ namespace Assets.Scripts.CardLibrary
                 transform.Find("bg/Text").GetComponent<Text>().text = GameConfigManager.Instance.GetCardTypeById(data["Type"])["Name"];
                 
             }
-            
         }
     }
 }
