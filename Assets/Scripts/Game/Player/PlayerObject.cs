@@ -30,8 +30,8 @@ public class PlayerObject : RoleObject
         base.Awake();
         playerCollider = GetComponent<Collider2D>();
         //选择对应的玩家model预设体并挂载与Player
-        //loadCharModel(characterData.Instance.characterID);
-        loadCharModel(0);
+        loadCharModel(characterData.Instance.characterID);
+        //loadCharModel(0);
         //开启输入控制
         InputMgr.GetInstance().StartOrEndCheck(true);
         //获取输入权限
@@ -185,9 +185,9 @@ public class PlayerObject : RoleObject
 
                 //随机load一种场景
                 //Set to battle entrence
-                //SceneLoader.instance.setTransition(2);
-                //SceneLoader.instance.LoadScene("BattleScene");
-                SceneManager.LoadScene("BattleScene");
+                SceneLoader.instance.setTransition(2);
+                SceneLoader.instance.LoadScene("BattleScene");
+                //SceneManager.LoadScene("BattleScene");
                 return;
                 
             }
@@ -233,7 +233,7 @@ public class PlayerObject : RoleObject
     {
         //事件中心 有加 就有减 一定不要往里面传 那么大表达式 一定是在下方去声明一个函数
         EventCenter.GetInstance().AddEventListener<float>("Horizontal", CheckX);
-        EventCenter.GetInstance().AddEventListener<float>("Vertical", CheckY);
+        //EventCenter.GetInstance().AddEventListener<float>("Vertical", CheckY);
         //监听按键按下内容
         EventCenter.GetInstance().AddEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
     }
@@ -245,7 +245,7 @@ public class PlayerObject : RoleObject
     {
         //事件中心 有加 就有减 一定不要往里面传 那么大表达式 一定是在下方去声明一个函数
         EventCenter.GetInstance().RemoveEventListener<float>("Horizontal", CheckX);
-        EventCenter.GetInstance().RemoveEventListener<float>("Vertical", CheckY);
+        //EventCenter.GetInstance().RemoveEventListener<float>("Vertical", CheckY);
         //监听按键按下内容
         EventCenter.GetInstance().RemoveEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
     }
